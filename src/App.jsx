@@ -7,40 +7,45 @@ import About from './pages/About';
 import Products from './pages/Products';
 import Contact from './pages/Contact';
 
-// ─── DARK THEME ───────────────────────────────────────────────────────────────
+// ─── PREMIUM LIGHT THEME ───────────────────────────────────────────────────────────────
 const theme = createTheme({
   palette: {
     mode: 'light',
-    primary: { main: '#1A2C5B' },
-    secondary: { main: '#E8841A' },
+    primary: { main: '#0C1E3C' }, // Premium Navy
+    secondary: { main: '#3e1387' }, // Vibrant Purple
     background: {
-      default: '#FEFCF8',
+      default: '#FDFAF5', // Cream Background
       paper: '#FFFFFF',
     },
     text: {
-      primary: '#1A2C5B',
-      secondary: '#4A5568',
+      primary: '#0C1E3C', // Navy Text
+      secondary: '#5C6E8A', // Muted Slate
     },
   },
   typography: {
     fontFamily: '"DM Sans", "Roboto", "Helvetica", sans-serif',
     h1: { fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 700 },
     h2: { fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 700 },
-    h3: { fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 600 },
-    h4: { fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 600 },
+    h3: { fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 700 },
+    h4: { fontFamily: '"Playfair Display", Georgia, serif', fontWeight: 700 },
   },
   shape: { borderRadius: 12 },
   components: {
     MuiCssBaseline: {
       styleOverrides: `
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { background: #FEFCF8; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        body { background: #FDFAF5; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        
+        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #F5F0E8; }
-        ::-webkit-scrollbar-thumb { background: #E8841A; border-radius: 3px; }
-        ::selection { background: #E8841A; color: #fff; }
+        ::-webkit-scrollbar-track { background: #F5F3FF; } /* Soft Purple Track */
+        ::-webkit-scrollbar-thumb { background: #3e1387; border-radius: 3px; } /* Purple Thumb */
+        
+        /* Text Highlight Selection */
+        ::selection { background: #3e1387; color: #fff; } 
       `,
     },
   },

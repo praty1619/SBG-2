@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container, Grid, Typography } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import { motion } from 'framer-motion';
 import './About.css';
 
@@ -66,7 +66,7 @@ export default function About() {
                     <span className="section-tag">Who We Are</span>
                     <h2 className="about-heading">
                         A Partner, Not Just<br />
-                        a <em className="heading-accent">Supplier</em>
+                        a <span className="heading-accent">Supplier</span>
                     </h2>
                     <p className="about-intro">
                         Since 2004, Shyama Business Growth has been turning ordinary shops into
@@ -107,7 +107,7 @@ export default function About() {
                         <span className="section-tag">Built for Bharat</span>
                         <h3 className="story-heading">
                             Empowering India's<br />
-                            <em className="heading-accent">Smallest Shops</em>
+                            <span className="heading-accent">Smallest Shops</span>
                         </h3>
                         <p className="story-body">
                             From rural kirana stores to semi-urban multi-product outlets, our franchise

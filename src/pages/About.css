@@ -1,12 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 /* ── Root ────────────────────────────────────────── */
 .about-root {
-    background: #080D1A;
+    background: #FDFAF5;
+    /* Cream */
     padding: clamp(5rem, 9vw, 9rem) 0;
     position: relative;
     overflow: hidden;
 }
 
-/* Subtle top border glow */
+/* Subtle top border accent */
 .about-root::before {
     content: '';
     position: absolute;
@@ -14,14 +17,11 @@
     left: 10%;
     right: 10%;
     height: 1px;
-    background: linear-gradient(90deg,
-            transparent,
-            rgba(232, 132, 26, 0.35),
-            transparent);
+    background: linear-gradient(90deg, transparent, rgba(62, 19, 135, 0.15), transparent);
 }
 
-/* ── Shared tag ──────────────────────────────────── */
-.section-tag {
+/* ── Shared tag (Forced Purple Override) ─────────── */
+.about-root .section-tag {
     display: inline-flex;
     align-items: center;
     gap: 7px;
@@ -30,27 +30,33 @@
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #E8841A;
-    background: rgba(232, 132, 26, 0.08);
-    border: 1px solid rgba(232, 132, 26, 0.2);
+    color: #3e1387 !important;
+    /* Force Purple */
+    background: #F5F3FF !important;
+    /* Light Purple Bg */
+    border: 1px solid rgba(62, 19, 135, 0.2) !important;
     padding: 6px 14px;
     border-radius: 999px;
     margin-bottom: 1.25rem;
+    box-shadow: 0 2px 16px rgba(62, 19, 135, 0.07);
 }
 
-.section-tag::before {
+.about-root .section-tag::before {
     content: '';
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
     border-radius: 50%;
-    background: #E8841A;
+    background: #3e1387 !important;
+    /* Force Purple Dot */
     flex-shrink: 0;
 }
 
-/* ── Heading styles ──────────────────────────────── */
-.heading-accent {
-    color: #E8841A;
-    font-style: italic;
+/* ── Heading styles (Forced Purple & No Italics) ─── */
+.about-root .heading-accent {
+    color: #3e1387 !important;
+    /* Force Purple */
+    font-style: normal !important;
+    /* Force Kill Italics */
 }
 
 /* ── Section header ──────────────────────────────── */
@@ -66,7 +72,7 @@
     font-family: 'Playfair Display', Georgia, serif;
     font-size: clamp(2.2rem, 4.5vw, 3.5rem);
     font-weight: 700;
-    color: #F0EBE1;
+    color: #0C1E3C;
     line-height: 1.15;
     margin: 0 0 1.25rem;
 }
@@ -74,7 +80,7 @@
 .about-intro {
     font-family: 'DM Sans', sans-serif;
     font-size: clamp(0.95rem, 1.5vw, 1.05rem);
-    color: #8A9BBF;
+    color: #5C6E8A;
     line-height: 1.75;
     max-width: 560px;
     margin: 0;
@@ -90,34 +96,37 @@
 
 .pillar-card {
     position: relative;
-    background: #0F1829;
+    background: #FFFFFF;
     border-radius: 20px;
     padding: 2rem 1.75rem;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(12, 30, 60, 0.09);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     cursor: default;
+    box-shadow: 0 8px 24px rgba(12, 30, 60, 0.02);
 }
 
 .pillar-card:hover {
     transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(12, 30, 60, 0.11);
 }
 
-/* Accent glow variants */
+/* Accent variants */
 .pillar--saffron:hover {
-    border-color: rgba(232, 132, 26, 0.3);
-    box-shadow: 0 20px 50px rgba(232, 132, 26, 0.1);
+    border-color: rgba(62, 19, 135, 0.3);
 }
 
+/* Purple */
 .pillar--blue:hover {
-    border-color: rgba(91, 141, 239, 0.3);
-    box-shadow: 0 20px 50px rgba(91, 141, 239, 0.1);
+    border-color: rgba(12, 30, 60, 0.2);
 }
 
+/* Navy */
 .pillar--green:hover {
-    border-color: rgba(52, 211, 153, 0.3);
-    box-shadow: 0 20px 50px rgba(52, 211, 153, 0.1);
+    border-color: rgba(131, 24, 67, 0.3);
 }
+
+/* Burgundy */
 
 /* Corner blob per accent */
 .pillar-card::after {
@@ -130,21 +139,25 @@
     border-radius: 50%;
     filter: blur(40px);
     pointer-events: none;
-    opacity: 0.5;
+    opacity: 0;
     transition: opacity 0.3s ease;
 }
 
 .pillar--saffron::after {
-    background: rgba(232, 132, 26, 0.25);
+    background: rgba(62, 19, 135, 0.15);
 }
 
+/* Purple */
 .pillar--blue::after {
-    background: rgba(91, 141, 239, 0.2);
+    background: rgba(12, 30, 60, 0.1);
 }
 
+/* Navy */
 .pillar--green::after {
-    background: rgba(52, 211, 153, 0.18);
+    background: rgba(131, 24, 67, 0.15);
 }
+
+/* Burgundy */
 
 .pillar-card:hover::after {
     opacity: 1;
@@ -159,23 +172,26 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 1.25rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: #FDFAF5;
+    border: 1px solid rgba(12, 30, 60, 0.09);
 }
 
 .pillar--saffron .pillar-icon-wrap {
-    background: rgba(232, 132, 26, 0.1);
-    border-color: rgba(232, 132, 26, 0.2);
+    background: #F5F3FF;
+    border-color: rgba(62, 19, 135, 0.15);
+    color: #3e1387;
 }
 
 .pillar--blue .pillar-icon-wrap {
-    background: rgba(91, 141, 239, 0.1);
-    border-color: rgba(91, 141, 239, 0.2);
+    background: rgba(12, 30, 60, 0.04);
+    border-color: rgba(12, 30, 60, 0.1);
+    color: #0C1E3C;
 }
 
 .pillar--green .pillar-icon-wrap {
-    background: rgba(52, 211, 153, 0.1);
-    border-color: rgba(52, 211, 153, 0.2);
+    background: rgba(131, 24, 67, 0.05);
+    border-color: rgba(131, 24, 67, 0.15);
+    color: #831843;
 }
 
 .pillar-icon {
@@ -184,10 +200,10 @@
 }
 
 .pillar-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: 1.3rem;
     font-weight: 700;
-    color: #F0EBE1;
+    color: #0C1E3C;
     margin: 0 0 0.75rem;
     line-height: 1.2;
 }
@@ -195,7 +211,7 @@
 .pillar-body {
     font-family: 'DM Sans', sans-serif;
     font-size: 0.9rem;
-    color: #8A9BBF;
+    color: #5C6E8A;
     line-height: 1.75;
     margin: 0 0 1.25rem;
 }
@@ -208,15 +224,15 @@
 }
 
 .pillar--saffron .pillar-line {
-    background: #E8841A;
+    background: #3e1387;
 }
 
 .pillar--blue .pillar-line {
-    background: #5B8DEF;
+    background: #0C1E3C;
 }
 
 .pillar--green .pillar-line {
-    background: #34D399;
+    background: #831843;
 }
 
 /* ── Story strip ─────────────────────────────────── */
@@ -225,12 +241,13 @@
     grid-template-columns: 1fr 1fr;
     gap: clamp(2rem, 5vw, 5rem);
     align-items: center;
-    background: #0F1829;
+    background: #FFFFFF;
     border-radius: 28px;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(12, 30, 60, 0.09);
     padding: clamp(2rem, 4vw, 3.5rem);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 12px 40px rgba(12, 30, 60, 0.06);
 }
 
 /* Subtle diagonal line decoration */
@@ -241,7 +258,7 @@
     right: 40%;
     width: 1px;
     height: 100%;
-    background: linear-gradient(to bottom, transparent, rgba(232, 132, 26, 0.15), transparent);
+    background: linear-gradient(to bottom, transparent, rgba(62, 19, 135, 0.15), transparent);
     pointer-events: none;
 }
 
@@ -253,10 +270,10 @@
 }
 
 .story-heading {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: clamp(1.7rem, 3vw, 2.4rem);
     font-weight: 700;
-    color: #F0EBE1;
+    color: #0C1E3C;
     line-height: 1.2;
     margin: 0 0 1rem;
 }
@@ -264,13 +281,13 @@
 .story-body {
     font-family: 'DM Sans', sans-serif;
     font-size: 0.95rem;
-    color: #8A9BBF;
+    color: #5C6E8A;
     line-height: 1.75;
     margin: 0 0 1.5rem;
 }
 
 .story-body strong {
-    color: #F0EBE1;
+    color: #0C1E3C;
     font-weight: 600;
 }
 
@@ -285,20 +302,20 @@
     align-items: center;
     gap: 6px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     font-weight: 500;
-    color: rgba(240, 235, 225, 0.7);
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #5C6E8A;
+    background: #FDFAF5;
+    border: 1px solid rgba(12, 30, 60, 0.09);
     padding: 6px 13px;
     border-radius: 999px;
     transition: all 0.22s ease;
 }
 
 .story-badge:hover {
-    background: rgba(232, 132, 26, 0.1);
-    border-color: rgba(232, 132, 26, 0.25);
-    color: #E8841A;
+    background: #F5F3FF;
+    border-color: rgba(62, 19, 135, 0.25);
+    color: #3e1387;
 }
 
 .story-badge-icon {
@@ -314,16 +331,13 @@
 
 .story-big-card {
     position: relative;
-    background: rgba(8, 13, 26, 0.7);
-    border: 1px solid rgba(232, 132, 26, 0.15);
+    background: #FFFFFF;
+    border: 1px solid rgba(62, 19, 135, 0.15);
     border-radius: 24px;
     padding: 2.5rem 2rem;
     width: 100%;
     max-width: 320px;
-    box-shadow:
-        0 0 0 1px rgba(232, 132, 26, 0.06),
-        0 24px 60px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 0 1px rgba(62, 19, 135, 0.06), 0 24px 60px rgba(12, 30, 60, 0.08);
     overflow: hidden;
     z-index: 1;
 }
@@ -338,12 +352,12 @@
 }
 
 .story-big-num {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: clamp(4.5rem, 8vw, 7rem);
     font-weight: 800;
-    color: #E8841A;
+    color: #3e1387;
     line-height: 1;
-    text-shadow: 0 0 60px rgba(232, 132, 26, 0.35);
+    text-shadow: 0 8px 24px rgba(62, 19, 135, 0.15);
 }
 
 .story-num-meta {
@@ -353,10 +367,10 @@
 }
 
 .story-plus {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: 2rem;
     font-weight: 800;
-    color: #E8841A;
+    color: #3e1387;
     line-height: 1;
 }
 
@@ -364,7 +378,7 @@
     font-family: 'DM Sans', sans-serif;
     font-size: 0.72rem;
     font-weight: 600;
-    color: #8A9BBF;
+    color: #5C6E8A;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     line-height: 1.35;
@@ -373,7 +387,7 @@
 
 .story-divider {
     height: 1px;
-    background: rgba(255, 255, 255, 0.07);
+    background: rgba(12, 30, 60, 0.09);
     margin-bottom: 1.25rem;
     position: relative;
     z-index: 2;
@@ -403,22 +417,22 @@
     top: 10%;
     height: 80%;
     width: 1px;
-    background: rgba(255, 255, 255, 0.07);
+    background: rgba(12, 30, 60, 0.09);
 }
 
 .story-mini-val {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: 1.25rem;
     font-weight: 700;
-    color: #F0EBE1;
+    color: #0C1E3C;
     line-height: 1;
 }
 
 .story-mini-label {
     font-family: 'DM Sans', sans-serif;
     font-size: 0.65rem;
-    font-weight: 500;
-    color: #8A9BBF;
+    font-weight: 600;
+    color: #5C6E8A;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     text-align: center;
@@ -428,7 +442,7 @@
 .story-ring {
     position: absolute;
     border-radius: 50%;
-    border: 1px solid rgba(232, 132, 26, 0.07);
+    border: 1px solid rgba(62, 19, 135, 0.06);
     pointer-events: none;
 }
 
@@ -446,7 +460,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-color: rgba(91, 141, 239, 0.07);
+    border-color: rgba(62, 19, 135, 0.04);
 }
 
 /* ── Responsive ──────────────────────────────────── */

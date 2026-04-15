@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
@@ -16,36 +16,28 @@ const navLinks = [
 export default function Navbar() {
     const location = useLocation();
     const [drawerOpen, setDrawerOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
 
     const { scrollY } = useScroll();
 
-    // Pill shrinks slightly when scrolled
-    const pillWidth = useTransform(scrollY, [0, 120], ['96%', '82%']);
-    const pillTop = useTransform(scrollY, [0, 120], ['20px', '12px']);
-    const pillBlur = useTransform(scrollY, [0, 120], [12, 24]);   // used in class logic
-    const pillBg = useTransform(
-        scrollY,
-        [0, 120],
-        ['rgba(8,13,26,0.55)', 'rgba(8,13,26,0.88)']
-    );
-    const pillBorder = useTransform(
-        scrollY,
-        [0, 120],
-        ['rgba(255,255,255,0.07)', 'rgba(232,132,26,0.25)']
-    );
+    // Shrink pill width on scroll
+    const pillWidth = useTransform(scrollY, [0, 120], ['96%', '84%']);
+    const pillTop = useTransform(scrollY, [0, 120], ['18px', '10px']);
+
+    // Track scroll for class toggle
+    useEffect(() => {
+        const unsub = scrollY.on('change', v => setScrolled(v > 80));
+        return unsub;
+    }, [scrollY]);
 
     return (
         <>
-            {/* ── Fixed wrapper ──────────────────────────────── */}
             <Box className="navbar-outer">
                 <motion.div
                     className="navbar-pill-wrapper"
                     style={{ width: pillWidth, top: pillTop }}
                 >
-                    <motion.nav
-                        className="navbar-pill"
-                        style={{ background: pillBg, borderColor: pillBorder }}
-                    >
+                    <nav className={`navbar-pill ${scrolled ? 'navbar-pill--scrolled' : ''}`}>
 
                         {/* Logo */}
                         <RouterLink to="/" className="nav-logo">
@@ -85,27 +77,22 @@ export default function Navbar() {
 
                         {/* CTA */}
                         <RouterLink to="/contact" className="nav-cta">
-                            <span>Become a Partner</span>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-                                stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
+                            Become a Partner
                         </RouterLink>
 
-                        {/* Mobile hamburger */}
+                        {/* Hamburger */}
                         <IconButton
                             className="nav-hamburger"
                             onClick={() => setDrawerOpen(true)}
                             size="small"
-                            aria-label="Open menu"
                         >
                             <MenuIcon />
                         </IconButton>
-                    </motion.nav>
+                    </nav>
                 </motion.div>
             </Box>
 
-            {/* ── Mobile Drawer ──────────────────────────────── */}
+            {/* Mobile Drawer */}
             <Drawer
                 anchor="right"
                 open={drawerOpen}
@@ -114,12 +101,13 @@ export default function Navbar() {
             >
                 <Box className="nav-drawer-inner">
                     <Box className="nav-drawer-header">
-                        <span className="logo-brand" style={{ fontSize: '1.1rem', color: '#E8841A' }}>SHYAMA</span>
-                        <IconButton onClick={() => setDrawerOpen(false)} sx={{ color: '#F0EBE1' }}>
+                        <span style={{ fontFamily: 'DM Sans', fontWeight: 700, fontSize: '1rem', color: '#1B2B5E', letterSpacing: '0.1em' }}>
+                            SHYAMA
+                        </span>
+                        <IconButton onClick={() => setDrawerOpen(false)} sx={{ color: '#1B2B5E' }}>
                             <CloseIcon />
                         </IconButton>
                     </Box>
-
                     <List className="nav-drawer-list">
                         {navLinks.map((link, i) => (
                             <motion.div
@@ -142,7 +130,6 @@ export default function Navbar() {
                             </motion.div>
                         ))}
                     </List>
-
                     <RouterLink
                         to="/contact"
                         className="nav-drawer-cta"

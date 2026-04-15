@@ -4,9 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import './Products.css';
 
 // ─────────────────────────────────────────────────────────────────────────────
-// UPDATE img paths to match your /public/product/ folder
-// e.g. img: '/product/1.png'  → public/product/1.png
-// Set featured: true on whichever product you want in the big left slot
+// Card accents use Brand Colors (Purple, Burgundy, Navy) for hover lines/glows.
+// tagColors use Semantic Colors (Saffron, Green, Red, Blue) for the retail tags.
 // ─────────────────────────────────────────────────────────────────────────────
 const products = [
     {
@@ -17,7 +16,8 @@ const products = [
         img: '/product/1.png',
         cat: 'Auto',
         tag: 'Top Seller',
-        accent: '#E8841A',
+        accent: '#3e1387', // Brand Purple
+        tagColor: '#E8841A', // Semantic Saffron
         featured: true,
     },
     {
@@ -28,7 +28,8 @@ const products = [
         img: '/product/2.png',
         cat: 'Auto',
         tag: 'High Demand',
-        accent: '#5B8DEF',
+        accent: '#0C1E3C', // Brand Navy
+        tagColor: '#DC2626', // Semantic Red
     },
     {
         id: 3,
@@ -38,7 +39,7 @@ const products = [
         img: '/product/3.png',
         cat: 'Auto',
         tag: null,
-        accent: '#34D399',
+        accent: '#831843', // Brand Burgundy
     },
     {
         id: 4,
@@ -48,7 +49,8 @@ const products = [
         img: '/product/4.png',
         cat: 'Home',
         tag: 'Fast Moving',
-        accent: '#A78BFA',
+        accent: '#3e1387', // Brand Purple
+        tagColor: '#2563EB', // Semantic Blue
     },
     {
         id: 5,
@@ -58,7 +60,8 @@ const products = [
         img: '/product/5.png',
         cat: 'Safety',
         tag: 'Certified',
-        accent: '#F87171',
+        accent: '#831843', // Brand Burgundy
+        tagColor: '#10B981', // Semantic Green
     },
     {
         id: 6,
@@ -68,7 +71,7 @@ const products = [
         img: '/product/6.png',
         cat: 'Auto',
         tag: null,
-        accent: '#E8841A',
+        accent: '#0C1E3C', // Brand Navy
     },
     {
         id: 7,
@@ -78,7 +81,7 @@ const products = [
         img: '/product/7.png',
         cat: 'Kitchen',
         tag: null,
-        accent: '#5B8DEF',
+        accent: '#3e1387', // Brand Purple
     },
     {
         id: 8,
@@ -88,7 +91,8 @@ const products = [
         img: '/product/8.png',
         cat: 'Home',
         tag: 'Eco Pick',
-        accent: '#34D399',
+        accent: '#0C1E3C', // Brand Navy
+        tagColor: '#10B981', // Semantic Fresh Green
     },
     {
         id: 9,
@@ -98,7 +102,8 @@ const products = [
         img: '/product/9.png',
         cat: 'Home',
         tag: 'Top Choice',
-        accent: '#60A5FA',
+        accent: '#831843', // Brand Burgundy
+        tagColor: '#E8841A', // Semantic Saffron
     },
 ];
 
@@ -137,7 +142,7 @@ export default function Products() {
                     <span className="section-tag">What We Supply</span>
                     <h2 className="prod-heading">
                         40–50 Products,<br />
-                        <em className="heading-accent">Ready from Day One</em>
+                        <span className="heading-accent">Ready from Day One</span>
                     </h2>
                     <p className="prod-intro">
                         Every franchise partner receives a curated starter stock of high-demand
@@ -191,21 +196,21 @@ export default function Products() {
                                         src={featured.img}
                                         alt={featured.name}
                                         className="feat-img"
-                                        animate={{ scale: hovered === featured.id ? 1.07 : 1 }}
+                                        animate={{ scale: hovered === featured.id ? 1.05 : 1 }}
                                         transition={{ duration: 0.55, ease: 'easeOut' }}
-                                        onError={e => {
-                                            e.currentTarget.parentElement.classList.add('img-error');
-                                        }}
                                     />
-                                    {/* Dark gradient so text over image is always readable */}
                                     <div className="feat-overlay" />
 
-                                    {/* Floating tag */}
+                                    {/* Floating Tag (Semantic Color) */}
                                     {featured.tag && (
-                                        <span className="feat-badge">{featured.tag}</span>
+                                        <span
+                                            className="feat-badge"
+                                            style={{ background: featured.tagColor, color: '#FFFFFF' }}
+                                        >
+                                            {featured.tag}
+                                        </span>
                                     )}
-
-                                    {/* Category */}
+                                    {/* Category Pill (Stays frosted white) */}
                                     <span className="feat-cat-pill">{featured.cat}</span>
                                 </div>
 
@@ -215,20 +220,11 @@ export default function Products() {
                                     <h3 className="feat-name">{featured.name}</h3>
                                     <p className="feat-desc">{featured.desc}</p>
                                     <div className="feat-footer">
-                                        <span
-                                            className="feat-dot"
-                                            style={{ background: featured.accent }}
-                                        />
+                                        <span className="feat-dot" style={{ background: featured.accent }} />
                                         <span className="feat-footer-label">Featured Product</span>
-                                        <span
-                                            className="feat-arrow"
-                                            style={{ color: featured.accent }}
-                                        >→</span>
+                                        <span className="feat-arrow" style={{ color: featured.accent }}>→</span>
                                     </div>
                                 </div>
-
-                                {/* Corner accent glow */}
-                                <div className="feat-glow" />
                             </motion.div>
                         )}
 
@@ -254,15 +250,19 @@ export default function Products() {
                                                 src={p.img}
                                                 alt={p.name}
                                                 className="card-img"
-                                                animate={{ scale: hovered === p.id ? 1.1 : 1 }}
+                                                animate={{ scale: hovered === p.id ? 1.08 : 1 }}
                                                 transition={{ duration: 0.4, ease: 'easeOut' }}
-                                                onError={e => {
-                                                    e.currentTarget.parentElement.classList.add('img-error');
-                                                }}
                                             />
                                             <div className="card-overlay" />
+
+                                            {/* Floating Tag (Semantic Color) */}
                                             {p.tag && (
-                                                <span className="card-badge">{p.tag}</span>
+                                                <span
+                                                    className="card-badge"
+                                                    style={{ background: p.tagColor, color: '#FFFFFF' }}
+                                                >
+                                                    {p.tag}
+                                                </span>
                                             )}
                                         </div>
 
@@ -273,11 +273,8 @@ export default function Products() {
                                             <p className="card-tagline">{p.tagline}</p>
                                         </div>
 
-                                        {/* Accent bottom line — expands on hover */}
+                                        {/* Subtle accent bottom line */}
                                         <div className="card-line" />
-
-                                        {/* Glow blob */}
-                                        <div className="card-glow" />
                                     </motion.div>
                                 ))}
                             </AnimatePresence>
