@@ -12,7 +12,7 @@ const steps = [
         title: 'Apply & Connect',
         desc: 'Fill a simple form. Our team reaches you within 24 hours to understand your goals, location, and investment capacity.',
         highlight: 'Response within 24 hrs',
-        color: 'saffron',
+        color: 'saffron', // Saffron
     },
     {
         num: '02',
@@ -20,7 +20,7 @@ const steps = [
         title: 'Receive Your Stock',
         desc: 'We deliver 30–40 curated, high-demand products straight to your store — pre-selected to move fast in any local market.',
         highlight: '30–40 products, Day 1',
-        color: 'blue',
+        color: 'navy', // Navy
     },
     {
         num: '03',
@@ -28,7 +28,7 @@ const steps = [
         title: 'Train & Launch',
         desc: 'Complete our sales & customer handling training. We stay beside you through your grand opening and first 30 days.',
         highlight: 'Full launch support',
-        color: 'green',
+        color: 'burgundy', // Burgundy
     },
     {
         num: '04',
@@ -36,7 +36,7 @@ const steps = [
         title: 'Grow Together',
         desc: 'Quarterly reviews, 24/7 assistance, complaint resolution, and an expanding product range as your business scales.',
         highlight: '24/7 ongoing support',
-        color: 'purple',
+        color: 'purple', // Purple
     },
 ];
 
@@ -66,7 +66,7 @@ export default function FranchiseJourney() {
                     <span className="section-tag">How It Works</span>
                     <h2 className="journey-heading">
                         Your Franchise Journey<br />
-                        in <em className="heading-accent">4 Simple Steps</em>
+                        in <span className="heading-accent">4 Simple Steps</span>
                     </h2>
                     <p className="journey-intro">
                         From application to a fully running store — we handle the complexity
@@ -140,7 +140,7 @@ export default function FranchiseJourney() {
                         <span className="journey-cta-emoji">🚀</span>
                         <div>
                             <p className="journey-cta-title">Ready to start your journey?</p>
-                            <p className="journey-cta-sub">Join 500+ partners already growing with Shyama.</p>
+                            <p className="journey-cta-sub">Join 150+ partners already growing with Shyama.</p>
                         </div>
                     </div>
                     <a href="#contact" className="journey-cta-btn">

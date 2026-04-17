@@ -18,7 +18,13 @@ const socials = [
 export default function Footer() {
     return (
         <Box component="footer" className="footer-root">
-            <Container maxWidth="lg">
+
+            {/* ── HIGH-END VISIBLE BACKGROUND DESIGN ── */}
+            <div className="footer-bg-glow footer-bg-glow--left" />
+            <div className="footer-bg-glow footer-bg-glow--right" />
+            <div className="footer-watermark">SHYAMA</div>
+
+            <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
 
                 {/* ── Main grid ── */}
                 <div className="footer-grid">
@@ -26,6 +32,7 @@ export default function Footer() {
                     {/* Brand column */}
                     <div className="footer-brand">
                         <div className="footer-logo">
+                            {/* Logo remains Original Saffron! */}
                             <div className="footer-logo-gem">S</div>
                             <div>
                                 <p className="footer-logo-name">SHYAMA</p>
@@ -80,6 +87,8 @@ export default function Footer() {
                                 <span>Jharkhand, India</span>
                             </div>
                         </div>
+
+                        {/* Solid Purple CTA Button */}
                         <a href="#contact" className="footer-cta-btn">
                             Become a Partner →
                         </a>

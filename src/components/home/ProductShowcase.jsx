@@ -4,11 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import './ProductShowcase.css';
 
 // ─────────────────────────────────────────────────────────────────────────────
-// CATEGORIES + IMAGES
-// Each image path maps to your /public/showcase/ folder.
-// Name your files however you like — just update the paths below.
-// Each category has a color accent, icon, count label, and array of images.
-// The 'span' property controls grid size: 'lg' = big cell, 'md' = medium, 'sm' = small
+// Accents updated to your Premium Brand Palette (Navy, Purple, Burgundy)
 // ─────────────────────────────────────────────────────────────────────────────
 const categories = [
     {
@@ -16,7 +12,7 @@ const categories = [
         label: 'Tyres',
         icon: '🏎️',
         count: '12 SKUs',
-        accent: '#E8841A',
+        accent: '#0C1E3C', // Navy
         desc: 'All-terrain, highway & two-wheeler tyres',
         images: [
             { src: '/showcase/tyres-1.png', span: 'lg', label: 'Agricultural Tyres' },
@@ -30,7 +26,7 @@ const categories = [
         label: 'Cooling',
         icon: '❄️',
         count: '8 SKUs',
-        accent: '#5B8DEF',
+        accent: '#3e1387', // Purple
         desc: 'Air coolers, AC units & refrigerators',
         images: [
             { src: '/showcase/cooling-1.png', span: 'lg', label: 'Desert Coolers' },
@@ -44,7 +40,7 @@ const categories = [
         label: 'Power',
         icon: '🔋',
         count: '10 SKUs',
-        accent: '#34D399',
+        accent: '#831843', // Burgundy
         desc: 'Batteries, inverters & UPS systems',
         images: [
             { src: '/showcase/power-1.png', span: 'lg', label: 'Inverter Batteries' },
@@ -58,7 +54,7 @@ const categories = [
         label: 'Kitchen',
         icon: '🍳',
         count: '9 SKUs',
-        accent: '#F87171',
+        accent: '#0C1E3C', // Navy
         desc: 'Appliances, cookware & gas stoves',
         images: [
             { src: '/showcase/kitchen-1.png', span: 'lg', label: 'Mixer Grinders' },
@@ -72,7 +68,7 @@ const categories = [
         label: 'Lighting & Safety',
         icon: '💡',
         count: '11 SKUs',
-        accent: '#A78BFA',
+        accent: '#3e1387', // Purple
         desc: 'LED lights, fans & safety helmets',
         images: [
             { src: '/showcase/lighting-1.png', span: 'lg', label: 'Ceiling Fans' },
@@ -129,7 +125,7 @@ export default function ProductShowcase() {
                     <span className="section-tag">Complete Range</span>
                     <h2 className="showcase-heading">
                         Everything Your Store Needs,<br />
-                        <em className="heading-accent">In One Partnership</em>
+                        <span className="heading-accent">In One Partnership</span>
                     </h2>
                     <p className="showcase-sub">
                         Tyres for every vehicle. Cooling for every home. Power for every need.
@@ -311,7 +307,7 @@ function ShowcaseImage({ src, label, accent }) {
             {/* Glow ring behind image */}
             <div
                 className="img-glow-ring"
-                style={{ opacity: hovered ? 1 : 0, boxShadow: `0 0 40px 8px ${accent}40` }}
+                style={{ opacity: hovered ? 1 : 0, boxShadow: `0 0 40px 8px ${accent}15` }}
             />
 
             <motion.img
@@ -330,6 +326,7 @@ function ShowcaseImage({ src, label, accent }) {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 8 }}
                 transition={{ duration: 0.22 }}
+                style={{ color: accent }}
             >
                 {label}
             </motion.div>

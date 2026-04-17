@@ -63,7 +63,7 @@ export default function BrandsMarquee() {
                     <h2 className="bm-heading">
                         Trusted Brands,
                         <br />
-                        <em className="heading-accent">Under One Roof</em>
+                        <span className="heading-accent">Under One Roof</span>
                     </h2>
                     <p className="bm-sub">
                         Every product we supply comes from established Indian and global brands —
@@ -151,10 +151,10 @@ function BrandTile({ n, size = 'md' }) {
     return (
         <motion.div
             className={`bm-tile bm-tile--${size}`}
-            whileHover={{ y: -6, scale: 1.05 }}
+            whileHover={{ y: -4 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
         >
-            {/* White pill background — logos always visible regardless of color */}
+            {/* White pill background */}
             <div className="bm-tile-bg">
                 <img
                     src={`/Brand/${n}.webp`}
@@ -165,8 +165,6 @@ function BrandTile({ n, size = 'md' }) {
                     onError={e => { e.currentTarget.style.opacity = '0'; }}
                 />
             </div>
-            {/* Hover glow ring */}
-            <div className="bm-tile-ring" />
         </motion.div>
     );
 }

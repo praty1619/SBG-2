@@ -3,9 +3,9 @@ import { Box, Container } from '@mui/material';
 import { motion } from 'framer-motion';
 import './WhyShyama.css';
 
-const vp     = { once: true, amount: 0.12 };
+const vp = { once: true, amount: 0.12 };
 const fadeUp = {
-  hidden:  { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1] } },
 };
 const stagger = {
@@ -13,13 +13,14 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
 };
 
+// ── Updated colors to match the premium palette ──
 const features = [
-  { icon: '🕐', title: '24/7 Partner Support',    desc: 'Call us at midnight or noon — our team is always on standby for your business needs.',   color: 'saffron' },
-  { icon: '📦', title: 'Ready Stock on Day 1',    desc: '30–40 in-demand products delivered to your store before you open your doors.',            color: 'blue'    },
-  { icon: '🏆', title: 'Proven Since 2004',       desc: 'Two decades of franchise success across India — not a startup promise, a proven track.',  color: 'green'   },
-  { icon: '📊', title: 'Structured Growth Plans', desc: 'Quarterly reviews, expansion roadmaps, and data-driven strategies built around you.',      color: 'purple'  },
-  { icon: '🤝', title: 'Long-term Partnership',   desc: "We don't just supply products — we invest in your success and grow beside you always.",    color: 'saffron' },
-  { icon: '🌾', title: 'Rural & Urban Ready',     desc: 'Our model lets small shops in any town compete confidently with big national brands.',     color: 'blue'    },
+  { icon: '🕐', title: '24/7 Partner Support', desc: 'Call us at midnight or noon — our team is always on standby for your business needs.', color: 'saffron' },
+  { icon: '📦', title: 'Ready Stock on Day 1', desc: '30–40 in-demand products delivered to your store before you open your doors.', color: 'navy' },
+  { icon: '🏆', title: 'Proven Since 2004', desc: 'Two decades of franchise success across India — not a startup promise, a proven track.', color: 'burgundy' },
+  { icon: '📊', title: 'Structured Growth Plans', desc: 'Quarterly reviews, expansion roadmaps, and data-driven strategies built around you.', color: 'purple' },
+  { icon: '🤝', title: 'Long-term Partnership', desc: "We don't just supply products — we invest in your success and grow beside you always.", color: 'saffron' },
+  { icon: '🌾', title: 'Rural & Urban Ready', desc: 'Our model lets small shops in any town compete confidently with big national brands.', color: 'navy' },
 ];
 
 const testimonials = [
@@ -75,7 +76,7 @@ export default function WhyShyama() {
           <span className="section-tag">Why Choose Us</span>
           <h2 className="why-heading">
             Everything You Need to<br />
-            <em className="heading-accent">Succeed From Day One</em>
+            <span className="heading-accent">Succeed From Day One</span>
           </h2>
           <p className="why-intro">
             We've built every element of our franchise model around one goal —
@@ -122,14 +123,14 @@ export default function WhyShyama() {
           >
             <span className="section-tag">Partner Stories</span>
             <h2 className="testi-heading">
-              Real People,<em className="heading-accent"> Real Growth</em>
+              Real People,<span className="heading-accent"> Real Growth</span>
             </h2>
           </motion.div>
         </Container>
 
         {/* Scrolling strip */}
         <div className="testi-track-outer">
-          <div className="testi-fade-left"  />
+          <div className="testi-fade-left" />
           <div className="testi-fade-right" />
           <div className="testi-track-inner" ref={stripRef}>
             {/* Double the cards for seamless loop */}
