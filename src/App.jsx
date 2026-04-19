@@ -4,7 +4,8 @@ import { createTheme, ThemeProvider, CssBaseline } from '@mui/material';
 import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
 import About from './pages/About';
-import Products from './pages/Products';
+// import Products from './pages/Products';
+import ProductShowcase from './pages/ProductShowcase'
 import Contact from './pages/Contact';
 
 // ─── PREMIUM LIGHT THEME ───────────────────────────────────────────────────────────────
@@ -60,7 +61,7 @@ export default function App() {
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
-            <Route path="products" element={<Products />} />
+            <Route path="ProductShowcase" element={<ProductShowcase />} />
             <Route path="contact" element={<Contact />} />
           </Route>
         </Routes>

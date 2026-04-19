@@ -7,7 +7,9 @@ import FranchiseJourney from '../pages/FranchiseJourney';
 import WhyShyama from '../pages/WhyShyama';
 import Contact from '../pages/Contact';
 import BrandsMarquee from '../components/home/BrandsMarquee';
-import ProductShowcase from '../components/home/ProductShowcase';
+import ProductShowcase from '../pages/ProductShowcase';
+import Model from '../pages/Model';
+import Range from '../pages/Range';
 
 export default function Home() {
     return (
@@ -15,9 +17,11 @@ export default function Home() {
             <Hero />
             {/* Next sections plug in here */}
             <About/>
-            <Products />
+            {/* <Products /> */}
             <ProductShowcase/>
+            <Range/>
             <BrandsMarquee />
+            <Model/>
             <FranchiseJourney />
             <WhyShyama />
             <Contact />
