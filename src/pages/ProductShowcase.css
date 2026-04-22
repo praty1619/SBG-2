@@ -29,7 +29,6 @@
     width: 600px;
     height: 600px;
     background: radial-gradient(circle, rgba(62, 19, 135, 0.04) 0%, transparent 70%);
-    /* Faint Purple */
     top: -150px;
     left: -150px;
 }
@@ -38,12 +37,11 @@
     width: 500px;
     height: 500px;
     background: radial-gradient(circle, rgba(131, 24, 67, 0.04) 0%, transparent 70%);
-    /* Faint Burgundy */
     bottom: -100px;
     right: -100px;
 }
 
-/* ── Shared Tags (Forced Purple Override) ──────────── */
+/* ── Shared Tags ───────────────────────────────────── */
 .showcase-root .section-tag {
     display: inline-flex;
     align-items: center;
@@ -74,7 +72,6 @@
 .showcase-root .heading-accent {
     color: #3e1387 !important;
     font-style: normal !important;
-    /* No Italics */
 }
 
 /* ── Header ────────────────────────────────────────── */
@@ -139,7 +136,7 @@
 }
 
 /* ════════════════════════════════════════════════════
-   LEFT SIDEBAR
+   LEFT SIDEBAR (Clean transparent background)
 ════════════════════════════════════════════════════ */
 .showcase-sidebar {
     position: sticky;
@@ -162,7 +159,7 @@
     margin-bottom: 0.5rem;
 }
 
-/* Tab button */
+/* Base Tab Button */
 .sidebar-tab {
     position: relative;
     display: flex;
@@ -180,24 +177,41 @@
 }
 
 .sidebar-tab:hover {
-    background: #FFFFFF;
-    border-color: rgba(12, 30, 60, 0.05);
+    background: #F5F3FF;
+    /* Very light purple hover */
+    border-color: rgba(62, 19, 135, 0.05);
 }
 
+/* ── MEDIUM PURPLISH HIGHLIGHT FOR ACTIVE TAB ── */
 .sidebar-tab--active {
-    background: #FFFFFF !important;
-    border-color: rgba(12, 30, 60, 0.09) !important;
-    box-shadow: 0 4px 16px rgba(12, 30, 60, 0.03);
+    background: #D4C4FF !important;
+    /* Perfect Medium Purple */
+    border-color: #D4C4FF !important;
+    box-shadow: 0 4px 16px rgba(62, 19, 135, 0.15);
 }
 
-/* Animated left bar */
+/* Deep Purple Text for Active State */
+.sidebar-tab--active .tab-label {
+    color: #3e1387 !important;
+    font-weight: 700;
+}
+
+.sidebar-tab--active .tab-count {
+    color: #3e1387 !important;
+    opacity: 0.85;
+    /* Slightly muted so it contrasts the label */
+}
+
+/* Animated left bar inside active tab */
 .tab-bar {
     position: absolute;
     left: 0;
     top: 20%;
     height: 60%;
-    width: 3px;
-    border-radius: 0 3px 3px 0;
+    width: 4px;
+    border-radius: 0 4px 4px 0;
+    background: #3e1387 !important;
+    /* Deep Purple indicator line */
 }
 
 .tab-icon {
@@ -237,10 +251,6 @@
     font-weight: 500;
     color: #5C6E8A;
     letter-spacing: 0.04em;
-}
-
-.sidebar-tab--active .tab-count {
-    color: var(--accent);
 }
 
 .tab-arrow {
@@ -359,9 +369,6 @@
 
 /* ════════════════════════════════════════════════════
    IMAGE MASONRY GRID
-   lg = spans 2 cols + 2 rows (big hero image)
-   md = spans 1 col + 2 rows (tall)
-   sm = spans 1 col + 1 row (normal)
 ════════════════════════════════════════════════════ */
 .showcase-grid {
     display: grid;
@@ -385,45 +392,28 @@
     grid-row: span 1;
 }
 
-/* ── Image wrap ────────────────────────────────────── */
 .showcase-img-wrap {
     position: relative;
     width: 100%;
     height: 100%;
-
-    /* The light purple studio gradient you asked for */
     background: linear-gradient(135deg, #FFFFFF 0%, #F5F3FF 100%);
-
-    /* Clean, premium 1px border */
     border: 1px solid rgba(12, 30, 60, 0.08);
-
-    /* Soft shadow to pop off the cream background */
     box-shadow: 0 6px 20px rgba(12, 30, 60, 0.03);
-
     border-radius: 18px;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: default;
-
-    /* Smooth transitions for the hover effect */
     transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-/* Hover State - Clean accent color and soft lift */
 .showcase-img-wrap:hover {
-    /* Smoothly illuminates in your category accent color (Navy, Purple, or Burgundy) */
     border-color: var(--accent);
-
-    /* Slightly deeper, elegant shadow on hover */
     box-shadow: 0 12px 32px rgba(62, 19, 135, 0.08);
-
-    /* Gentle lift effect */
     transform: translateY(-3px);
 }
 
-/* Glow ring */
 .img-glow-ring {
     position: absolute;
     inset: 0;
@@ -433,7 +423,6 @@
     z-index: 0;
 }
 
-/* The actual image */
 .showcase-img {
     position: relative;
     z-index: 1;
@@ -443,13 +432,11 @@
     height: auto;
     object-fit: contain;
     display: block;
-    /* Soft drop shadow for products */
     filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.1));
     user-select: none;
     -webkit-user-drag: none;
 }
 
-/* Hover label (Frosted Glass) */
 .img-label {
     position: absolute;
     bottom: 12px;
@@ -458,7 +445,6 @@
     font-family: 'DM Sans', sans-serif;
     font-size: 0.72rem;
     font-weight: 700;
-    /* Frosted white */
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(8px);
     padding: 4px 12px;
@@ -469,7 +455,6 @@
     z-index: 2;
 }
 
-/* Tiny accent dot corner */
 .img-corner-dot {
     position: absolute;
     top: 12px;
@@ -480,7 +465,6 @@
     z-index: 2;
     opacity: 0.7;
 }
-
 
 /* ── Responsive ────────────────────────────────────── */
 @media (max-width: 1024px) {
@@ -498,7 +482,6 @@
         grid-template-columns: 1fr;
     }
 
-    /* Horizontal scrolling pill tabs */
     .showcase-sidebar {
         position: relative;
         top: 0;
@@ -509,7 +492,6 @@
         padding-bottom: 10px;
         scrollbar-width: thin;
         scrollbar-color: #3e1387 rgba(62, 19, 135, 0.05);
-        /* Purple track */
     }
 
     .showcase-sidebar::-webkit-scrollbar {
@@ -535,7 +517,7 @@
         display: none;
     }
 
-    /* Each tab becomes a pill */
+    /* Mobile tabs become pills */
     .sidebar-tab {
         flex-shrink: 0;
         flex-direction: row;
@@ -543,16 +525,17 @@
         gap: 7px;
         padding: 9px 16px;
         border-radius: 999px;
-        border: 1px solid rgba(12, 30, 60, 0.09);
         background: #FFFFFF;
+        border: 1px solid rgba(12, 30, 60, 0.09);
         white-space: nowrap;
         transform: none !important;
     }
 
+    /* Medium Purplish for Mobile Active Pill */
     .sidebar-tab--active {
-        background: #FFFFFF !important;
-        border-color: rgba(12, 30, 60, 0.15) !important;
-        box-shadow: 0 4px 12px rgba(12, 30, 60, 0.04);
+        background: #D4C4FF !important;
+        border-color: #D4C4FF !important;
+        box-shadow: 0 4px 12px rgba(62, 19, 135, 0.15);
     }
 
     .tab-bar,
@@ -577,22 +560,15 @@
         font-family: 'DM Sans', sans-serif;
         font-size: 0.82rem;
         font-weight: 600;
-        color: #5C6E8A;
         display: block;
     }
 
-    .sidebar-tab--active .tab-label {
-        color: var(--accent);
-    }
-
-    /* Category header stacks on mobile */
     .showcase-cat-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.4rem;
     }
 
-    /* Grid becomes 2-col on tablet/mobile */
     .showcase-grid {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: 160px 160px 160px;
@@ -627,10 +603,6 @@
 }
 
 @media (max-width: 860px) {
-    .sidebar-cta {
-        display: none;
-    }
-
     .mobile-cta {
         display: flex;
         align-items: center;
@@ -666,7 +638,6 @@
         height: 120px;
         border-radius: 50%;
         background: rgba(62, 19, 135, 0.08);
-        /* Faint Purple */
         filter: blur(30px);
         pointer-events: none;
     }
@@ -710,7 +681,6 @@
         gap: 7px;
         flex-shrink: 0;
         background: #3e1387;
-        /* Purple Button */
         color: #fff;
         font-family: 'DM Sans', sans-serif;
         font-size: 0.82rem;
@@ -728,15 +698,6 @@
     .mobile-cta-btn:hover {
         transform: translateY(-2px);
         box-shadow: 0 8px 24px rgba(62, 19, 135, 0.35);
-    }
-
-    .mobile-cta-btn svg {
-        flex-shrink: 0;
-        transition: transform 0.2s ease;
-    }
-
-    .mobile-cta-btn:hover svg {
-        transform: translateX(3px);
     }
 }
 

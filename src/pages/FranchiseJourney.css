@@ -17,10 +17,8 @@
     right: 10%;
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(62, 19, 135, 0.15), transparent);
-    /* Soft purple */
 }
 
-/* Dot grid background */
 .journey-root::after {
     content: '';
     position: absolute;
@@ -30,7 +28,7 @@
     pointer-events: none;
 }
 
-/* ── Shared Tags (Forced Purple Override) ──────────── */
+/* ── Shared Tags ─────────────────────────────────── */
 .journey-root .section-tag {
     display: inline-flex;
     align-items: center;
@@ -61,7 +59,6 @@
 .journey-root .heading-accent {
     color: #3e1387 !important;
     font-style: normal !important;
-    /* No Italics */
 }
 
 /* ── Header ──────────────────────────────────────── */
@@ -70,7 +67,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: clamp(3rem, 6vw, 5rem);
+    margin-bottom: clamp(3rem, 6vw, 4rem);
     position: relative;
     z-index: 1;
 }
@@ -80,7 +77,6 @@
     font-size: clamp(2.2rem, 4.5vw, 3.5rem);
     font-weight: 700;
     color: #0C1E3C;
-    /* Navy */
     line-height: 1.15;
     margin: 0 0 1rem;
 }
@@ -89,251 +85,206 @@
     font-family: 'DM Sans', sans-serif;
     font-size: clamp(0.92rem, 1.4vw, 1rem);
     color: #5C6E8A;
-    /* Slate */
     line-height: 1.75;
     max-width: 500px;
     margin: 0;
 }
 
-/* ── Steps row ───────────────────────────────────── */
-.journey-steps {
+/* ══════════════════════════════════════════════════
+   INTERACTIVE HORIZONTAL ACCORDION (SMOOTH & PURPLE)
+══════════════════════════════════════════════════ */
+.fj-accordion-container {
     display: flex;
-    align-items: stretch;
-    gap: 0;
-    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+    gap: 16px;
+    width: 100%;
+    height: 550px;
+    /* Taller height to fit the beautiful images */
+    margin-bottom: clamp(3rem, 6vw, 5rem);
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
-/* ── Step card (Studio Gradient) ─────────────────── */
-.journey-card {
-    flex: 1;
-    min-width: 0;
-    background: linear-gradient(135deg, #FFFFFF 0%, #F5F3FF 100%);
-    /* Studio Gradient */
-    border: 1px solid rgba(62, 19, 135, 0.08);
-    border-radius: 20px;
-    padding: 2rem 1.5rem;
+/* Base Card Styles */
+.fj-card {
     position: relative;
+    border-radius: 32px;
     overflow: hidden;
-    cursor: default;
-    box-shadow: 0 8px 24px rgba(12, 30, 60, 0.03);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Accent top border per color */
-.journey-card--saffron {
-    border-top: 3px solid #E8841A;
-}
-
-.journey-card--navy {
-    border-top: 3px solid #0C1E3C;
-}
-
-.journey-card--burgundy {
-    border-top: 3px solid #831843;
-}
-
-.journey-card--purple {
-    border-top: 3px solid #3e1387;
-}
-
-/* Hovers map to the respective colors */
-.journey-card--saffron:hover {
-    border-color: rgba(232, 132, 26, 0.3);
-    box-shadow: 0 16px 40px rgba(232, 132, 26, 0.08);
-}
-
-.journey-card--navy:hover {
-    border-color: rgba(12, 30, 60, 0.2);
-    box-shadow: 0 16px 40px rgba(12, 30, 60, 0.08);
-}
-
-.journey-card--burgundy:hover {
-    border-color: rgba(131, 24, 67, 0.3);
-    box-shadow: 0 16px 40px rgba(131, 24, 67, 0.08);
-}
-
-.journey-card--purple:hover {
-    border-color: rgba(62, 19, 135, 0.3);
-    box-shadow: 0 16px 40px rgba(62, 19, 135, 0.08);
-}
-
-/* Corner accent diagonal slash */
-.journey-accent {
-    position: absolute;
-    bottom: -30px;
-    right: -30px;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    filter: blur(30px);
-    opacity: 0.05;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-.journey-card:hover .journey-accent {
-    opacity: 0.15;
-}
-
-.journey-accent--saffron {
-    background: #E8841A;
-}
-
-.journey-accent--navy {
-    background: #0C1E3C;
-}
-
-.journey-accent--burgundy {
-    background: #831843;
-}
-
-.journey-accent--purple {
-    background: #3e1387;
-}
-
-/* Step number */
-.journey-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 0.85rem;
-    font-weight: 800;
-    color: #0C1E3C;
-    margin-bottom: 1rem;
-}
-
-/* Icon Wrap */
-.journey-icon-wrap {
-    width: 50px;
-    height: 50px;
-    border-radius: 14px;
+    cursor: pointer;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.1rem;
-    background: #FFFFFF;
-    border: 1px solid rgba(12, 30, 60, 0.06);
-    transition: transform 0.25s ease;
+    /* Inactive state: narrow width */
+    flex: 0 0 90px;
+    box-shadow: 0 8px 24px rgba(62, 19, 135, 0.08);
 }
 
-.journey-card:hover .journey-icon-wrap {
-    transform: rotate(-5deg) scale(1.08);
-}
-
-.journey-card--saffron .journey-icon-wrap {
-    background: rgba(232, 132, 26, 0.05);
-    border-color: rgba(232, 132, 26, 0.15);
-}
-
-.journey-card--navy .journey-icon-wrap {
-    background: rgba(12, 30, 60, 0.04);
-    border-color: rgba(12, 30, 60, 0.1);
-}
-
-.journey-card--burgundy .journey-icon-wrap {
-    background: rgba(131, 24, 67, 0.05);
-    border-color: rgba(131, 24, 67, 0.15);
-}
-
-.journey-card--purple .journey-icon-wrap {
-    background: rgba(62, 19, 135, 0.06);
-    border-color: rgba(62, 19, 135, 0.15);
-}
-
-.journey-icon {
-    font-size: 1.5rem;
-    line-height: 1;
-}
-
-/* Text */
-.journey-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: #0C1E3C;
-    margin: 0 0 0.6rem;
-    line-height: 1.25;
-}
-
-.journey-desc {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    color: #5C6E8A;
-    line-height: 1.7;
-    margin: 0 0 1.25rem;
+/* Active State: expands smoothly to fill remaining space */
+.fj-card.active {
     flex: 1;
+    cursor: default;
+    box-shadow: 0 16px 48px rgba(62, 19, 135, 0.15);
 }
 
-/* Highlight pill */
-.journey-highlight {
+/* ── Monochromatic Purple Gradient Shades ── */
+.fj-card--p1 {
+    background: linear-gradient(135deg, #B28BFF 0%, #9666FF 100%);
+}
+
+/* Lightest */
+.fj-card--p2 {
+    background: linear-gradient(135deg, #9666FF 0%, #7433FF 100%);
+}
+
+.fj-card--p3 {
+    background: linear-gradient(135deg, #7433FF 0%, #5013CA 100%);
+}
+
+.fj-card--p4 {
+    background: linear-gradient(135deg, #5013CA 0%, #3e1387 100%);
+}
+
+/* Darkest (Brand) */
+
+
+/* ── Collapsed Content (Vertical Text) ── */
+.fj-collapsed {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.fj-collapsed.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.fj-col-num {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: auto;
+}
+
+.fj-col-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    white-space: nowrap;
+    /* Rotate text to run vertically bottom-to-top */
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    letter-spacing: 0.05em;
+}
+
+/* ── Expanded Content (Includes Image Space) ── */
+.fj-expanded {
+    position: absolute;
+    inset: 0;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    pointer-events: none;
+    /* Prevents text from squishing during animation */
+    min-width: 500px;
+    /* Delayed fade in makes it incredibly smooth */
+    transition: opacity 0.3s ease 0.2s;
+}
+
+.fj-expanded.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Expanded Text Header */
+.fj-exp-header {
+    margin-bottom: 1.25rem;
+}
+
+.fj-exp-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0 0 0.5rem;
+    line-height: 1.1;
+}
+
+.fj-exp-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+    margin: 0;
+    max-width: 500px;
+}
+
+/* ── Image Wrapper Space ── */
+.fj-exp-image-wrap {
+    flex: 1;
+    /* Automatically takes up all middle space */
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.15);
+    /* Soft placeholder before image loads */
+    margin-bottom: 1.25rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.fj-exp-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Expanded Bottom Bar */
+.fj-exp-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.fj-exp-highlight {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #FFFFFF;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 600;
-    padding: 5px 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 8px 18px;
     border-radius: 999px;
+}
+
+.fj-hl-dot {
+    width: 6px;
+    height: 6px;
     background: #FFFFFF;
-}
-
-.journey-highlight--saffron {
-    color: #E8841A;
-    border: 1px solid rgba(232, 132, 26, 0.15);
-}
-
-.journey-highlight--navy {
-    color: #0C1E3C;
-    border: 1px solid rgba(12, 30, 60, 0.15);
-}
-
-.journey-highlight--burgundy {
-    color: #831843;
-    border: 1px solid rgba(131, 24, 67, 0.15);
-}
-
-.journey-highlight--purple {
-    color: #3e1387;
-    border: 1px solid rgba(62, 19, 135, 0.15);
-}
-
-.journey-highlight-dot {
-    width: 5px;
-    height: 5px;
     border-radius: 50%;
-    background: currentColor;
-    flex-shrink: 0;
 }
 
-/* ── Connector ───────────────────────────────────── */
-.journey-connector {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 4px;
-    flex-shrink: 0;
-    gap: 2px;
-    transform-origin: left center;
-    margin-top: -1rem;
+.fj-exp-num-large {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 0.8;
+    color: rgba(255, 255, 255, 0.3);
 }
 
-.connector-line {
-    width: 2px;
-    height: 32px;
-    background: linear-gradient(to bottom, rgba(62, 19, 135, 0.2), rgba(62, 19, 135, 0.05));
-    border-radius: 2px;
-}
 
-.connector-arrow {
-    font-size: 1rem;
-    color: rgba(62, 19, 135, 0.3);
-    line-height: 1;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-}
-
-/* ── Bottom CTA strip (Studio Gradient) ──────────── */
+/* ── Bottom CTA strip ────────────────────────────── */
 .journey-cta-strip {
     display: flex;
     align-items: center;
@@ -353,8 +304,6 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    position: relative;
-    z-index: 1;
 }
 
 .journey-cta-emoji {
@@ -382,7 +331,6 @@
     align-items: center;
     gap: 8px;
     background: #3e1387;
-    /* Purple CTA */
     color: #fff;
     font-family: 'DM Sans', sans-serif;
     font-size: 0.9rem;
@@ -391,11 +339,8 @@
     border-radius: 999px;
     text-decoration: none;
     white-space: nowrap;
-    flex-shrink: 0;
     box-shadow: 0 6px 24px rgba(62, 19, 135, 0.25);
     transition: all 0.25s ease;
-    position: relative;
-    z-index: 1;
 }
 
 .journey-cta-btn:hover {
@@ -404,29 +349,55 @@
 }
 
 /* ── Responsive ──────────────────────────────────── */
+
 @media (max-width: 960px) {
-    .journey-steps {
+    .fj-accordion-container {
         flex-direction: column;
-        gap: 1rem;
-        max-width: 480px;
-        margin-left: auto;
-        margin-right: auto;
+        height: auto;
+        /* Allow natural height expansion */
     }
 
-    .journey-connector {
+    .fj-card {
+        flex: 0 0 70px;
+        /* Short vertical height for inactive */
+        border-radius: 20px;
+    }
+
+    .fj-card.active {
+        flex: 0 0 450px;
+        /* Fixed height for active card on tablet */
+    }
+
+    /* Adjust Collapsed content for vertical layout */
+    .fj-collapsed {
         flex-direction: row;
-        justify-content: center;
-        margin-top: 0;
-        padding: 4px 0;
-        gap: 4px;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0 1.5rem;
+        gap: 1.5rem;
     }
 
-    .connector-line {
-        width: 32px;
-        height: 2px;
-        background: linear-gradient(to right, rgba(62, 19, 135, 0.2), rgba(62, 19, 135, 0.05));
+    .fj-col-num {
+        margin-bottom: 0;
     }
 
+    .fj-col-title {
+        writing-mode: horizontal-tb;
+        /* Reset text to normal reading */
+        transform: none;
+    }
+
+    /* Adjust Expanded content constraints */
+    .fj-expanded {
+        min-width: 0;
+        padding: 2rem;
+    }
+
+    .fj-exp-title {
+        font-size: 1.8rem;
+    }
+
+    /* CTA Adjustments */
     .journey-cta-strip {
         flex-direction: column;
         text-align: center;
@@ -440,5 +411,20 @@
     .journey-cta-btn {
         width: 100%;
         justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .fj-card.active {
+        flex: 0 0 500px;
+        /* Give more vertical room on small phones for the image */
+    }
+
+    .fj-expanded {
+        padding: 1.5rem;
+    }
+
+    .fj-exp-title {
+        font-size: 1.5rem;
     }
 }

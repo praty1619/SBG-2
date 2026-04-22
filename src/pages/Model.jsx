@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Container } from '@mui/material';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Model.css';
 
 const vp = { once: true, amount: 0.1 };
@@ -15,7 +15,6 @@ const stagger = {
     visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 };
 
-// Added colors to map to the CSS
 const levels = [
     {
         id: '01',
@@ -47,7 +46,6 @@ const levels = [
     },
 ];
 
-// Added colors to the ecosystem icons to make them pop!
 const ecosystem = [
     {
         eyebrow: 'Day 1 Stock',
@@ -94,6 +92,8 @@ const ecosystem = [
 ];
 
 export default function Model() {
+    const [activeLevel, setActiveLevel] = useState(0);
+
     return (
         <Box component="section" className="model-root" id="growth-model">
             <Container maxWidth="lg">
@@ -117,29 +117,81 @@ export default function Model() {
                     </p>
                 </motion.div>
 
-                {/* ── The 4 Levels Grid ── */}
-                <motion.div
-                    className="levels-grid"
-                    variants={stagger}
+                {/* ── Interactive Tabbed Showcase ── */}
+                <motion.div 
+                    className="model-showcase-wrapper"
+                    variants={fadeUp}
                     initial="hidden"
                     whileInView="visible"
                     viewport={vp}
                 >
-                    {levels.map((level, i) => (
-                        <motion.div key={i} className={`level-card level-card--${level.color}`} variants={fadeUp}>
-                            <div className="level-img-wrap">
-                                <img src={level.img} alt={`Level ${level.id}`} className="level-img" />
-                                <div className="level-overlay" />
-                                <div className="level-badge">Level {level.id}</div>
-                            </div>
-                            <div className="level-body">
-                                <h3 className="level-title">{level.title}</h3>
-                                <p className="level-desc">{level.desc}</p>
-                            </div>
-                            {/* Connective arrow for desktop (hidden on last item) */}
-                            {i < levels.length - 1 && <div className="level-arrow">→</div>}
-                        </motion.div>
-                    ))}
+                    {/* Sliding Pill Navigation Bar */}
+                    <div className="model-tabs-container">
+                        <div className="model-tabs-bar">
+                            {levels.map((level, i) => {
+                                const isActive = activeLevel === i;
+                                return (
+                                    <button 
+                                        key={level.id} 
+                                        onClick={() => setActiveLevel(i)} 
+                                        className={`model-tab ${isActive ? 'active' : ''}`}
+                                    >
+                                        {isActive && (
+                                            <motion.div 
+                                                layoutId="activeModelTab" 
+                                                className="model-tab-bg"
+                                                transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                                            />
+                                        )}
+                                        <span className="model-tab-text">
+                                            {level.title}
+                                        </span>
+                                    </button>
+                                );
+                            })}
+                        </div>
+                    </div>
+
+                    {/* Fading Content Area */}
+                    <div className="model-content-area">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={activeLevel}
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -15 }}
+                                transition={{ duration: 0.35, ease: "easeOut" }}
+                                className="model-content-grid"
+                            >
+                                {/* Left Side: Text Details */}
+                                <div className="model-content-left">
+                                    <span className={`model-level-badge model-level-badge--${levels[activeLevel].color}`}>
+                                        Level {levels[activeLevel].id}
+                                    </span>
+                                    <h3 className="model-content-title">
+                                        {levels[activeLevel].title}
+                                    </h3>
+                                    <p className="model-content-desc">
+                                        {levels[activeLevel].desc}
+                                    </p>
+                                    <a href="#contact" className="model-content-cta">
+                                        Know More →
+                                    </a>
+                                </div>
+
+                                {/* Right Side: Massive Image Space */}
+                                <div className="model-content-right">
+                                    <div className="model-image-wrapper">
+                                        <img 
+                                            src={levels[activeLevel].img} 
+                                            alt={levels[activeLevel].title} 
+                                            className="model-featured-img"
+                                        />
+                                    </div>
+                                </div>
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
                 </motion.div>
 
                 {/* ── Financial Highlights Banner ── */}

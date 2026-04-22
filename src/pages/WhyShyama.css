@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
-/* ── Root ────────────────────────────────────────── */
+/* ═════════════════════════════════════════════════════════════
+   PART 1: WHY CHOOSE US (FEATURES GRID)
+═════════════════════════════════════════════════════════════ */
 .why-root {
   background: #FDFAF5;
   /* Cream */
-  padding: clamp(5rem, 9vw, 9rem) 0 0;
+  padding: clamp(5rem, 9vw, 9rem) 0 clamp(4rem, 6vw, 6rem);
   position: relative;
   overflow: hidden;
 }
@@ -17,11 +19,10 @@
   right: 10%;
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(62, 19, 135, 0.15), transparent);
-  /* Faint Purple */
 }
 
-/* ── Shared Tags (Forced Purple Override) ──────────── */
-.why-root .section-tag {
+/* Shared Tags */
+.section-tag {
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -39,7 +40,7 @@
   box-shadow: 0 2px 12px rgba(62, 19, 135, 0.05);
 }
 
-.why-root .section-tag::before {
+.section-tag::before {
   content: '';
   width: 6px;
   height: 6px;
@@ -48,14 +49,25 @@
   flex-shrink: 0;
 }
 
-.why-root .heading-accent {
-  color: #3e1387 !important;
-  /* Purple Accent */
-  font-style: normal !important;
-  /* No Italics */
+/* Tag specifically for dark backgrounds */
+.section-tag--dark {
+  color: #FFFFFF !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* ── Header ──────────────────────────────────────── */
+.section-tag--dark::before {
+  background: #FFFFFF !important;
+}
+
+
+.heading-accent {
+  color: #3e1387 !important;
+  font-style: normal !important;
+}
+
+/* Feature Header */
 .why-header {
   text-align: center;
   display: flex;
@@ -69,7 +81,6 @@
   font-size: clamp(2.2rem, 4.5vw, 3.5rem);
   font-weight: 700;
   color: #0C1E3C;
-  /* Navy */
   line-height: 1.15;
   margin: 0 0 1rem;
 }
@@ -78,25 +89,22 @@
   font-family: 'DM Sans', sans-serif;
   font-size: clamp(0.92rem, 1.4vw, 1rem);
   color: #5C6E8A;
-  /* Slate */
   line-height: 1.75;
   max-width: 500px;
   margin: 0;
 }
 
-/* ── Feature grid ────────────────────────────────── */
+/* Feature Grid */
 .why-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.1rem;
-  margin-bottom: clamp(3rem, 6vw, 5rem);
 }
 
-/* ── Why card (Studio Gradient) ──────────────────── */
+/* Feature Card */
 .why-card {
   background: linear-gradient(135deg, #FFFFFF 0%, #F5F3FF 100%);
   border: 1px solid rgba(62, 19, 135, 0.08);
-  /* Faint purple border */
   border-radius: 20px;
   padding: 1.75rem 1.5rem;
   position: relative;
@@ -106,7 +114,6 @@
   transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
 }
 
-/* Hover mapped to new Premium Colors */
 .why-card--saffron:hover {
   border-color: rgba(232, 132, 26, 0.3);
   box-shadow: 0 16px 40px rgba(232, 132, 26, 0.08);
@@ -127,7 +134,6 @@
   box-shadow: 0 16px 40px rgba(62, 19, 135, 0.08);
 }
 
-/* Glow blob per card */
 .why-card::after {
   content: '';
   position: absolute;
@@ -162,7 +168,6 @@
   opacity: 1;
 }
 
-/* Icon */
 .why-icon-wrap {
   width: 50px;
   height: 50px;
@@ -222,7 +227,6 @@
   margin: 0 0 1.1rem;
 }
 
-/* Bottom Line Accents */
 .why-line {
   height: 3px;
   width: 32px;
@@ -245,154 +249,220 @@
   background: #3e1387;
 }
 
-/* ── Testimonials ────────────────────────────────── */
-.testimonials-section {
-  padding: clamp(3rem, 6vw, 5rem) 0;
-  overflow: hidden;
+
+/* ═════════════════════════════════════════════════════════════
+   PART 2: PARTNER STORIES (FULL-BLEED LIGHTER PURPLE SECTION)
+═════════════════════════════════════════════════════════════ */
+.ws-section-full {
+  /* Significantly Lighter, Vibrant Purple */
+  background: #7841f7;
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  width: 100%;
+  position: relative;
 }
 
-.testimonials-header {
-  text-align: center;
+.ws-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: clamp(3rem, 6vw, 5rem);
+  align-items: center;
+}
+
+/* Left Side (Text Inverted to White) */
+.ws-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-bottom: clamp(2rem, 4vw, 3rem);
+  align-items: flex-start;
 }
 
-.testi-heading {
+.ws-heading {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
-  color: #0C1E3C;
-  /* Navy */
-  margin: 0;
-  line-height: 1.15;
+  color: #FFFFFF;
+  /* White on purple */
+  line-height: 1.1;
+  margin: 0 0 1.5rem;
 }
 
-/* Track */
-.testi-track-outer {
+.ws-intro {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  color: rgba(255, 255, 255, 0.9);
+  /* Off-white on purple */
+  line-height: 1.75;
+  margin: 0 0 1rem;
+}
+
+/* Scroller Container */
+.ws-scroller {
   position: relative;
+  width: 100%;
+  height: clamp(500px, 60vh, 700px);
   overflow: hidden;
+  padding: 20px 0;
 }
 
-.testi-fade-left,
-.testi-fade-right {
+/* Vignette Gradients perfectly matching the new #8B5CF6 Background */
+.ws-vignette {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 140px;
-  z-index: 2;
+  left: 0;
+  right: 0;
+  height: 100px;
+  z-index: 5;
   pointer-events: none;
 }
 
-.testi-fade-left {
-  left: 0;
-  background: linear-gradient(to right, #FDFAF5 0%, rgba(253, 250, 245, 0.8) 30%, transparent 100%);
+.ws-vignette--top {
+  top: -5px;
+  background: linear-gradient(to bottom, #7841f7 10%, transparent 100%);
 }
 
-.testi-fade-right {
-  right: 0;
-  background: linear-gradient(to left, #FDFAF5 0%, rgba(253, 250, 245, 0.8) 30%, transparent 100%);
+.ws-vignette--bottom {
+  bottom: -5px;
+  background: linear-gradient(to top, #7841f7 10%, transparent 100%);
 }
 
-.testi-track-inner {
-  display: flex;
-  gap: 1.25rem;
-  padding: 1rem 2rem;
-  will-change: transform;
+.ws-scroller-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
-/* Testimonial card (Studio Gradient) */
-.testi-card {
-  flex-shrink: 0;
-  width: 320px;
-  background: linear-gradient(135deg, #FFFFFF 0%, #F5F3FF 100%);
-  border: 1px solid rgba(62, 19, 135, 0.08);
-  border-radius: 20px;
-  padding: 1.75rem;
+.ws-scroller-col {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  box-shadow: 0 8px 24px rgba(12, 30, 60, 0.03);
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  gap: 20px;
 }
 
-.testi-card:hover {
-  border-color: #3e1387;
-  box-shadow: 0 16px 40px rgba(62, 19, 135, 0.08);
-  transform: translateY(-2px);
+/* LIGHT PURPLE TESTIMONIAL CARDS */
+.ws-testimonial-card {
+  background: #F0EBFF;
+  /* Beautiful Light Purple */
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 2.25rem 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
 }
 
-/* Stars */
-.stars {
+.ws-testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.2);
+}
+
+.ws-card-inner {
+  position: relative;
   display: flex;
-  gap: 3px;
+  flex-direction: column;
 }
 
-.star {
-  color: #E8841A;
-  font-size: 0.95rem;
+.ws-quote-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
 }
 
-.testi-text {
+.ws-quote-icon {
+  opacity: 0.7;
+}
+
+.ws-stars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.ws-review-text {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.88rem;
-  color: #5C6E8A;
-  line-height: 1.7;
-  margin: 0;
-  flex: 1;
-  font-style: italic;
+  font-size: 0.95rem;
+  color: #1A202C;
+  /* Deeper slate for contrast on light purple */
+  line-height: 1.6;
+  margin: 0 0 1.5rem;
 }
 
-.testi-author {
+.ws-author {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-top: 0.75rem;
-  border-top: 1px solid rgba(12, 30, 60, 0.06);
+  flex-direction: column;
 }
 
-/* Premium Rich Gradient Avatar */
-.testi-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #3e1387, #831843);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Playfair Display', serif;
+.ws-author-name {
+  font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
   font-weight: 700;
-  color: #fff;
-  flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(62, 19, 135, 0.25);
-}
-
-.testi-name {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #0C1E3C;
+  color: #3e1387;
+  /* Deep Purple Name */
   margin: 0 0 2px;
 }
 
-.testi-loc {
+.ws-author-role {
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: #5C6E8A;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #831843;
+  /* Burgundy Role */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   margin: 0;
 }
 
+.ws-card-blur {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  filter: blur(20px);
+  pointer-events: none;
+  z-index: -1;
+}
+
 /* ── Responsive ──────────────────────────────────── */
-@media (max-width: 960px) {
+@media (max-width: 1024px) {
   .why-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ws-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .ws-header {
+    align-items: center;
+    text-align: center;
+  }
+
+  .ws-intro {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .ws-vignette {
+    height: 60px;
+  }
+
+  .ws-scroller {
+    height: 500px;
   }
 }
 
 @media (max-width: 600px) {
+  .why-root {
+    padding: clamp(4rem, 8vw, 6rem) 0 clamp(2rem, 4vw, 3rem);
+  }
+
+  .ws-section-full {
+    padding: clamp(3rem, 6vw, 4rem) 0;
+  }
+
   .why-grid {
     grid-template-columns: 1fr;
     max-width: 400px;
@@ -400,7 +470,23 @@
     margin-right: auto;
   }
 
-  .testi-card {
-    width: 280px;
+  .ws-scroller-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .ws-scroller-col:last-child {
+    display: none;
+  }
+
+  .ws-scroller-col {
+    gap: 15px;
+  }
+
+  .ws-testimonial-card {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .ws-vignette {
+    height: 40px;
   }
 }

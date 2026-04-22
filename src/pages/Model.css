@@ -58,7 +58,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: clamp(3rem, 6vw, 4rem);
+    margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
 }
 
 .model-heading {
@@ -66,7 +66,6 @@
     font-size: clamp(2.2rem, 4.5vw, 3.5rem);
     font-weight: 700;
     color: #0C1E3C;
-    /* Navy */
     line-height: 1.15;
     margin: 0 0 1rem;
 }
@@ -75,145 +74,199 @@
     font-family: 'DM Sans', sans-serif;
     font-size: clamp(0.95rem, 1.4vw, 1.05rem);
     color: #5C6E8A;
-    /* Slate */
     line-height: 1.75;
     max-width: 600px;
     margin: 0;
 }
 
-/* ── Levels Grid (The 4 Stages) ──────────────────── */
-.levels-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    margin-bottom: clamp(3rem, 6vw, 5rem);
+/* ══════════════════════════════════════════════════
+   INTERACTIVE TABBED SHOWCASE
+══════════════════════════════════════════════════ */
+.model-showcase-wrapper {
+    margin-bottom: clamp(4rem, 8vw, 6rem);
 }
 
-.level-card {
-    position: relative;
-    background: linear-gradient(135deg, #FFFFFF 0%, #F5F3FF 100%);
-    /* Studio Gradient */
-    border: 1px solid rgba(62, 19, 135, 0.08);
-    border-radius: 20px;
+/* ── Sliding Pill Navigation Bar ── */
+.model-tabs-container {
     display: flex;
-    flex-direction: column;
-    box-shadow: 0 8px 24px rgba(12, 30, 60, 0.03);
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    justify-content: center;
+    margin-bottom: 3.5rem;
 }
 
-.level-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(62, 19, 135, 0.25);
-    box-shadow: 0 16px 40px rgba(62, 19, 135, 0.08);
+.model-tabs-bar {
+    display: inline-flex;
+    background: #3e1387;
+    /* HERO PURPLISH BACKGROUND */
+    padding: 6px;
+    border-radius: 999px;
+    box-shadow: 0 12px 32px rgba(62, 19, 135, 0.25);
+    /* Purple shadow glow */
+    max-width: 100%;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
-/* NEW: Full Bleed Image Wrapper */
-.level-img-wrap {
-    width: 100%;
-    height: 220px;
-    /* Taller */
-    background: #EAE6F5;
-    /* Base color while loading */
-    border-radius: 20px 20px 0 0;
-    border-bottom: 1px solid rgba(12, 30, 60, 0.05);
+.model-tabs-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.model-tab {
     position: relative;
-    overflow: hidden;
+    background: transparent;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 999px;
+    cursor: pointer;
+    outline: none;
+    transition: color 0.3s ease;
+    flex-shrink: 0;
 }
 
-/* Faint inner shadow overlay so edges aren't harsh */
-.level-overlay {
+/* LIGHT PURPLISH SLIDER BACKGROUND FOR ACTIVE STATE */
+.model-tab-bg {
     position: absolute;
     inset: 0;
-    box-shadow: inset 0 0 0 1px rgba(12, 30, 60, 0.05);
-    pointer-events: none;
-    z-index: 1;
+    background: #F5F3FF;
+    /* Light Purplish */
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 0;
 }
 
-/* Image now covers the entire box edge-to-edge */
-.level-img {
+.model-tab-text {
+    position: relative;
+    z-index: 1;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+    /* Faded white against the dark purple */
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.model-tab.active .model-tab-text {
+    color: #3e1387;
+    /* Hero Purple text when active */
+    font-weight: 700;
+}
+
+.model-tab:hover:not(.active) .model-tab-text {
+    color: #FFFFFF;
+    /* Pure white on hover */
+}
+
+
+/* ── Content Area ── */
+.model-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.model-content-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Colorful Level Badge */
+.model-level-badge {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 999px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.model-level-badge--saffron {
+    color: #E8841A;
+    background: rgba(232, 132, 26, 0.1);
+    border: 1px solid rgba(232, 132, 26, 0.2);
+}
+
+.model-level-badge--navy {
+    color: #0C1E3C;
+    background: rgba(12, 30, 60, 0.08);
+    border: 1px solid rgba(12, 30, 60, 0.15);
+}
+
+.model-level-badge--burgundy {
+    color: #831843;
+    background: rgba(131, 24, 67, 0.1);
+    border: 1px solid rgba(131, 24, 67, 0.2);
+}
+
+.model-level-badge--purple {
+    color: #3e1387;
+    background: rgba(62, 19, 135, 0.1);
+    border: 1px solid rgba(62, 19, 135, 0.2);
+}
+
+.model-content-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3rem);
+    font-weight: 700;
+    color: #0C1E3C;
+    margin: 0 0 1rem;
+    line-height: 1.15;
+}
+
+.model-content-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    color: #5C6E8A;
+    line-height: 1.7;
+    margin: 0 0 2rem;
+    max-width: 480px;
+}
+
+.model-content-cta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #3e1387;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.model-content-cta:hover {
+    transform: translateX(4px);
+    color: #E8841A;
+}
+
+/* Image Wrapper */
+.model-image-wrapper {
+    width: 100%;
+    border-radius: 32px;
+    overflow: hidden;
+    /* Soft background in case image is transparent */
+    background: linear-gradient(135deg, #FFFFFF 0%, #F5F3FF 100%);
+    border: 1px solid rgba(62, 19, 135, 0.08);
+    box-shadow: 0 24px 64px rgba(12, 30, 60, 0.08);
+    /* Set a nice height to match the text on desktop */
+    min-height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.model-featured-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* This makes it fill the container perfectly */
     display: block;
-    transition: transform 0.4s ease;
 }
 
-.level-card:hover .level-img {
-    transform: scale(1.05);
-}
-
-/* Colored Floating Badge */
-.level-badge {
-    position: absolute;
-    top: 16px;
-    left: 16px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #fff;
-    /* White text pops against the colors */
-    padding: 6px 14px;
-    border-radius: 999px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 2;
-}
-
-/* Dynamic Colors for Badges */
-.level-card--saffron .level-badge {
-    background: #E8841A;
-}
-
-.level-card--navy .level-badge {
-    background: #0C1E3C;
-}
-
-.level-card--burgundy .level-badge {
-    background: #831843;
-}
-
-.level-card--purple .level-badge {
-    background: #3e1387;
-}
-
-.level-body {
-    padding: 1.5rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.level-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: #0C1E3C;
-    margin: 0 0 0.5rem;
-    line-height: 1.25;
-}
-
-.level-desc {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    color: #5C6E8A;
-    line-height: 1.6;
-    margin: 0;
-}
-
-/* Arrow connecting desktop cards */
-.level-arrow {
-    position: absolute;
-    top: 50%;
-    right: -20px;
-    transform: translateY(-50%);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1.5rem;
-    color: rgba(62, 19, 135, 0.2);
-    z-index: 2;
-    pointer-events: none;
-}
 
 /* ── Financial Highlights Banner ─────────────────── */
 .model-stats-banner {
@@ -303,10 +356,8 @@
 }
 
 .eco-card {
-    /* NEW: Studio Gradient */
     background: linear-gradient(135deg, #FFFFFF 0%, #F5F3FF 100%);
     border: 1px solid rgba(62, 19, 135, 0.08);
-    /* Faint purple border */
     border-radius: 20px;
     padding: 1.75rem;
     display: flex;
@@ -322,7 +373,6 @@
     box-shadow: 0 16px 40px rgba(62, 19, 135, 0.08);
 }
 
-/* Dynamic colored icon wraps */
 .eco-icon-wrap {
     width: 48px;
     height: 48px;
@@ -370,7 +420,6 @@
     flex: 1;
 }
 
-/* Dynamic eyebrow text */
 .eco-eyebrow {
     font-family: 'DM Sans', sans-serif;
     font-size: 0.65rem;
@@ -457,13 +506,9 @@
 
 /* ── Responsive ──────────────────────────────────── */
 @media (max-width: 1024px) {
-    .levels-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem 1.5rem;
-    }
-
-    .level-arrow {
-        display: none;
+    .model-content-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
     }
 
     .eco-grid {
@@ -471,7 +516,25 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 860px) {
+    .model-content-grid {
+        grid-template-columns: 1fr;
+        /* Stack image on bottom for mobile */
+    }
+
+    .model-content-left {
+        align-items: center;
+        text-align: center;
+    }
+
+    .model-content-desc {
+        margin: 0 auto 2rem;
+    }
+
+    .model-image-wrapper {
+        min-height: 280px;
+    }
+
     .model-stats-banner {
         flex-direction: column;
         gap: 1.5rem;
@@ -486,10 +549,6 @@
 }
 
 @media (max-width: 600px) {
-    .levels-grid {
-        grid-template-columns: 1fr;
-    }
-
     .eco-grid {
         grid-template-columns: 1fr;
     }
