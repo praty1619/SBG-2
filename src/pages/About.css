@@ -467,6 +467,11 @@
         grid-template-columns: 1fr;
     }
 
+    /* FIX: Hide the vertical divider line on mobile */
+    .story-strip::before {
+        display: none;
+    }
+
     .story-right {
         justify-content: center;
     }
