@@ -118,81 +118,102 @@ export default function Model() {
                 </motion.div>
 
                 {/* ── Interactive Tabbed Showcase ── */}
-                <motion.div 
-                    className="model-showcase-wrapper"
-                    variants={fadeUp}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={vp}
-                >
-                    {/* Sliding Pill Navigation Bar */}
-                    <div className="model-tabs-container">
-                        <div className="model-tabs-bar">
-                            {levels.map((level, i) => {
-                                const isActive = activeLevel === i;
-                                return (
-                                    <button 
-                                        key={level.id} 
-                                        onClick={() => setActiveLevel(i)} 
-                                        className={`model-tab ${isActive ? 'active' : ''}`}
-                                    >
-                                        {isActive && (
-                                            <motion.div 
-                                                layoutId="activeModelTab" 
-                                                className="model-tab-bg"
-                                                transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                                            />
-                                        )}
-                                        <span className="model-tab-text">
-                                            {level.title}
+                <div className="model-showcase-wrapper">
+
+                    {/* ── DESKTOP VIEW: Interactive Tabs ── */}
+                    <div className="model-desktop-view">
+                        <div className="model-tabs-container">
+                            <div className="model-tabs-bar">
+                                {levels.map((level, i) => {
+                                    const isActive = activeLevel === i;
+                                    return (
+                                        <button
+                                            key={level.id}
+                                            onClick={() => setActiveLevel(i)}
+                                            className={`model-tab ${isActive ? 'active' : ''}`}
+                                        >
+                                            {isActive && (
+                                                <motion.div
+                                                    layoutId="activeModelTab"
+                                                    className="model-tab-bg"
+                                                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                                                />
+                                            )}
+                                            <span className="model-tab-text">
+                                                {level.title}
+                                            </span>
+                                        </button>
+                                    );
+                                })}
+                            </div>
+                        </div>
+
+                        <div className="model-content-area">
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={activeLevel}
+                                    initial={{ opacity: 0, y: 15 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -15 }}
+                                    transition={{ duration: 0.35, ease: "easeOut" }}
+                                    className="model-content-grid"
+                                >
+                                    <div className="model-content-left">
+                                        <span className={`model-level-badge model-level-badge--${levels[activeLevel].color}`}>
+                                            Level {levels[activeLevel].id}
                                         </span>
-                                    </button>
-                                );
-                            })}
+                                        <h3 className="model-content-title">
+                                            {levels[activeLevel].title}
+                                        </h3>
+                                        <p className="model-content-desc">
+                                            {levels[activeLevel].desc}
+                                        </p>
+                                        <a href="#contact" className="model-content-cta">
+                                            Know More →
+                                        </a>
+                                    </div>
+
+                                    <div className="model-content-right">
+                                        <div className="model-image-wrapper">
+                                            <img
+                                                src={levels[activeLevel].img}
+                                                alt={levels[activeLevel].title}
+                                                className="model-featured-img"
+                                            />
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            </AnimatePresence>
                         </div>
                     </div>
 
-                    {/* Fading Content Area */}
-                    <div className="model-content-area">
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={activeLevel}
-                                initial={{ opacity: 0, y: 15 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -15 }}
-                                transition={{ duration: 0.35, ease: "easeOut" }}
-                                className="model-content-grid"
-                            >
-                                {/* Left Side: Text Details */}
-                                <div className="model-content-left">
-                                    <span className={`model-level-badge model-level-badge--${levels[activeLevel].color}`}>
-                                        Level {levels[activeLevel].id}
+                    {/* ── MOBILE VIEW: Stacked Vertical Cards ── */}
+                    <motion.div
+                        className="model-mobile-view"
+                        variants={stagger}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={vp}
+                    >
+                        {levels.map((level) => (
+                            <motion.div key={level.id} className="model-mobile-card" variants={fadeUp}>
+                                <div className="mobile-card-img-wrap">
+                                    <img src={level.img} alt={level.title} />
+                                </div>
+                                <div className="mobile-card-content">
+                                    <span className={`model-level-badge model-level-badge--${level.color}`}>
+                                        Level {level.id}
                                     </span>
-                                    <h3 className="model-content-title">
-                                        {levels[activeLevel].title}
-                                    </h3>
-                                    <p className="model-content-desc">
-                                        {levels[activeLevel].desc}
-                                    </p>
+                                    <h3 className="mobile-card-title">{level.title}</h3>
+                                    <p className="mobile-card-desc">{level.desc}</p>
                                     <a href="#contact" className="model-content-cta">
                                         Know More →
                                     </a>
                                 </div>
-
-                                {/* Right Side: Massive Image Space */}
-                                <div className="model-content-right">
-                                    <div className="model-image-wrapper">
-                                        <img 
-                                            src={levels[activeLevel].img} 
-                                            alt={levels[activeLevel].title} 
-                                            className="model-featured-img"
-                                        />
-                                    </div>
-                                </div>
                             </motion.div>
-                        </AnimatePresence>
-                    </div>
-                </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
 
                 {/* ── Financial Highlights Banner ── */}
                 <motion.div

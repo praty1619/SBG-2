@@ -39,16 +39,13 @@ export default function Navbar() {
                 >
                     <nav className={`navbar-pill ${scrolled ? 'navbar-pill--scrolled' : ''}`}>
 
-                        {/* Logo */}
+                        {/* ── Seamless Full Logo Placement ── */}
                         <RouterLink to="/" className="nav-logo">
-                            <div className="logo-gem">
-                                <span>S</span>
-                                <div className="logo-gem-shine" />
-                            </div>
-                            <div className="logo-wordmark">
-                                <span className="logo-brand">SHYAMA</span>
-                                <span className="logo-sub">Business Growth</span>
-                            </div>
+                            <img
+                                src="/logo/1.webp"
+                                alt="Shyama Business Growth Logo"
+                                className="nav-logo-graphic"
+                            />
                         </RouterLink>
 
                         {/* Desktop links */}
@@ -101,9 +98,8 @@ export default function Navbar() {
             >
                 <Box className="nav-drawer-inner">
                     <Box className="nav-drawer-header">
-                        <span style={{ fontFamily: 'DM Sans', fontWeight: 700, fontSize: '1rem', color: '#1B2B5E', letterSpacing: '0.1em' }}>
-                            SHYAMA
-                        </span>
+                        {/* You can keep a text fallback in the drawer or use the image here too! */}
+                        <img src="/logo/1.webp" alt="Shyama Logo" style={{ height: '32px' }} />
                         <IconButton onClick={() => setDrawerOpen(false)} sx={{ color: '#1B2B5E' }}>
                             <CloseIcon />
                         </IconButton>

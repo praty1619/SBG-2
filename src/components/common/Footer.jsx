@@ -31,14 +31,16 @@ export default function Footer() {
 
                     {/* Brand column */}
                     <div className="footer-brand">
-                        <div className="footer-logo">
-                            {/* Logo remains Original Saffron! */}
-                            <div className="footer-logo-gem">S</div>
-                            <div>
-                                <p className="footer-logo-name">SHYAMA</p>
-                                <p className="footer-logo-sub">Business Growth</p>
-                            </div>
+
+                        {/* ── Sleek Transparent Logo Box ── */}
+                        <div className="footer-logo-container">
+                            <img
+                                src="/logo/1.webp"
+                                alt="Shyama Business Growth Logo"
+                                className="footer-logo-graphic"
+                            />
                         </div>
+
                         <p className="footer-tagline">
                             Empowering India's entrepreneurs since 2004 with products, training,
                             and round-the-clock partner support.

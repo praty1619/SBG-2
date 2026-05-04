@@ -3,7 +3,6 @@
 /* ── Root ──────────────────────────────────────────── */
 .showcase-root {
     background: #FDFAF5;
-    /* Cream */
     padding: clamp(5rem, 9vw, 9rem) 0;
     position: relative;
     overflow: hidden;
@@ -178,19 +177,15 @@
 
 .sidebar-tab:hover {
     background: #F5F3FF;
-    /* Very light purple hover */
     border-color: rgba(62, 19, 135, 0.05);
 }
 
-/* ── MEDIUM PURPLISH HIGHLIGHT FOR ACTIVE TAB ── */
 .sidebar-tab--active {
     background: #D4C4FF !important;
-    /* Perfect Medium Purple */
     border-color: #D4C4FF !important;
     box-shadow: 0 4px 16px rgba(62, 19, 135, 0.15);
 }
 
-/* Deep Purple Text for Active State */
 .sidebar-tab--active .tab-label {
     color: #3e1387 !important;
     font-weight: 700;
@@ -199,10 +194,8 @@
 .sidebar-tab--active .tab-count {
     color: #3e1387 !important;
     opacity: 0.85;
-    /* Slightly muted so it contrasts the label */
 }
 
-/* Animated left bar inside active tab */
 .tab-bar {
     position: absolute;
     left: 0;
@@ -211,7 +204,6 @@
     width: 4px;
     border-radius: 0 4px 4px 0;
     background: #3e1387 !important;
-    /* Deep Purple indicator line */
 }
 
 .tab-icon {
@@ -259,7 +251,6 @@
     font-weight: 300;
 }
 
-/* Sidebar bottom CTA card */
 .sidebar-cta {
     margin-top: 1.25rem;
     background: #FFFFFF;
@@ -314,7 +305,6 @@
     min-width: 0;
 }
 
-/* Category header bar */
 .showcase-cat-header {
     display: flex;
     align-items: center;
@@ -368,12 +358,15 @@
 }
 
 /* ════════════════════════════════════════════════════
-   IMAGE MASONRY GRID
+   IMAGE MASONRY GRID (Using Dense Packing for "All" Tab)
 ════════════════════════════════════════════════════ */
 .showcase-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 200px 200px;
+    /* Auto-rows replaces template rows so it can expand infinitely */
+    grid-auto-rows: 200px;
+    /* DENSE packing makes sure all images fit perfectly like a puzzle */
+    grid-auto-flow: dense;
     gap: 1rem;
 }
 
@@ -473,7 +466,7 @@
     }
 
     .showcase-grid {
-        grid-template-rows: 170px 170px;
+        grid-auto-rows: 170px;
     }
 }
 
@@ -482,48 +475,34 @@
         grid-template-columns: 1fr;
     }
 
+    /* ── REPLACED SCROLL WITH TIGHT WRAPPING TABS ── */
     .showcase-sidebar {
         position: relative;
         top: 0;
         flex-direction: row;
-        overflow-x: auto;
-        overflow-y: visible;
-        gap: 8px;
-        padding-bottom: 10px;
-        scrollbar-width: thin;
-        scrollbar-color: #3e1387 rgba(62, 19, 135, 0.05);
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+        /* Smaller gap */
+        padding-bottom: 5px;
     }
 
-    .showcase-sidebar::-webkit-scrollbar {
-        display: block;
-        height: 3px;
-    }
-
-    .showcase-sidebar::-webkit-scrollbar-track {
-        background: #F5F3FF;
-        border-radius: 999px;
-    }
-
-    .showcase-sidebar::-webkit-scrollbar-thumb {
-        background: #3e1387;
-        border-radius: 999px;
-    }
-
-    .sidebar-eyebrow {
-        display: none;
-    }
-
+    .sidebar-eyebrow,
     .sidebar-cta {
         display: none;
     }
 
-    /* Mobile tabs become pills */
+    /* Smaller Mobile Pills */
     .sidebar-tab {
+        width: auto;
         flex-shrink: 0;
         flex-direction: row;
         align-items: center;
-        gap: 7px;
-        padding: 9px 16px;
+        justify-content: center;
+        gap: 5px;
+        /* Tighter gap */
+        padding: 6px 12px;
+        /* Smaller padding */
         border-radius: 999px;
         background: #FFFFFF;
         border: 1px solid rgba(12, 30, 60, 0.09);
@@ -531,7 +510,6 @@
         transform: none !important;
     }
 
-    /* Medium Purplish for Mobile Active Pill */
     .sidebar-tab--active {
         background: #D4C4FF !important;
         border-color: #D4C4FF !important;
@@ -545,7 +523,8 @@
     }
 
     .tab-icon {
-        font-size: 1rem;
+        font-size: 0.9rem;
+        /* Smaller icon */
         flex-shrink: 0;
         transform: none !important;
     }
@@ -558,7 +537,8 @@
 
     .tab-label {
         font-family: 'DM Sans', sans-serif;
-        font-size: 0.82rem;
+        font-size: 0.75rem;
+        /* Smaller text */
         font-weight: 600;
         display: block;
     }
@@ -571,7 +551,7 @@
 
     .showcase-grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: 160px 160px 160px;
+        grid-auto-rows: 160px;
     }
 
     .showcase-cell--lg {
@@ -591,9 +571,21 @@
 }
 
 @media (max-width: 480px) {
+    .showcase-sidebar {
+        gap: 5px;
+    }
+
+    .sidebar-tab {
+        padding: 5px 10px;
+    }
+
+    .tab-label {
+        font-size: 0.7rem;
+    }
+
     .showcase-grid {
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: repeat(4, 140px);
+        grid-auto-rows: 140px;
     }
 }
 

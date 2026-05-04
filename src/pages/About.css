@@ -3,13 +3,11 @@
 /* ── Root ────────────────────────────────────────── */
 .about-root {
     background: #FDFAF5;
-    /* Cream */
     padding: clamp(5rem, 9vw, 9rem) 0;
     position: relative;
     overflow: hidden;
 }
 
-/* Subtle top border accent */
 .about-root::before {
     content: '';
     position: absolute;
@@ -20,7 +18,7 @@
     background: linear-gradient(90deg, transparent, rgba(62, 19, 135, 0.15), transparent);
 }
 
-/* ── Shared tag (Forced Purple Override) ─────────── */
+/* ── Shared tag ──────────────────────────────────── */
 .about-root .section-tag {
     display: inline-flex;
     align-items: center;
@@ -48,7 +46,6 @@
     flex-shrink: 0;
 }
 
-/* ── Heading styles (Forced Purple & No Italics) ─── */
 .about-root .heading-accent {
     color: #3e1387 !important;
     font-style: normal !important;
@@ -91,11 +88,9 @@
 
 .pillar-card {
     position: relative;
-    /* NEW: Studio Gradient */
     background: linear-gradient(135deg, #FFFFFF 0%, #F5F3FF 100%);
     border-radius: 20px;
     padding: 2rem 1.75rem;
-    /* NEW: Tinted purple border */
     border: 1px solid rgba(62, 19, 135, 0.08);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
@@ -108,7 +103,6 @@
     box-shadow: 0 12px 40px rgba(62, 19, 135, 0.1);
 }
 
-/* Accent variants */
 .pillar--saffron:hover {
     border-color: rgba(62, 19, 135, 0.3);
 }
@@ -121,7 +115,6 @@
     border-color: rgba(131, 24, 67, 0.3);
 }
 
-/* Corner blob per accent */
 .pillar-card::after {
     content: '';
     position: absolute;
@@ -152,7 +145,6 @@
     opacity: 1;
 }
 
-/* Icon */
 .pillar-icon-wrap {
     width: 52px;
     height: 52px;
@@ -205,7 +197,6 @@
     margin: 0 0 1.25rem;
 }
 
-/* Bottom accent line */
 .pillar-line {
     height: 2px;
     border-radius: 2px;
@@ -228,9 +219,8 @@
 .story-strip {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: clamp(2rem, 5vw, 5rem);
+    gap: clamp(2rem, 5vw, 4rem);
     align-items: center;
-    /* NEW: Studio Gradient */
     background: linear-gradient(135deg, #FFFFFF 0%, #F5F3FF 100%);
     border-radius: 28px;
     border: 1px solid rgba(62, 19, 135, 0.08);
@@ -240,19 +230,6 @@
     box-shadow: 0 12px 40px rgba(12, 30, 60, 0.04);
 }
 
-/* Subtle diagonal line decoration */
-.story-strip::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 40%;
-    width: 1px;
-    height: 100%;
-    background: linear-gradient(to bottom, transparent, rgba(62, 19, 135, 0.15), transparent);
-    pointer-events: none;
-}
-
-/* Left */
 .story-left {
     display: flex;
     flex-direction: column;
@@ -312,149 +289,135 @@
     font-size: 0.9rem;
 }
 
-/* Right — big number card */
-.story-right {
+/* ═════════════════════════════════════════════════════════════
+   DYNAMIC CAROUSEL 
+═════════════════════════════════════════════════════════════ */
+.story-dynamic-right {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.story-big-card {
-    position: relative;
-    /* NEW: Studio Gradient */
-    background: linear-gradient(135deg, #FFFFFF 0%, #F5F3FF 100%);
-    border: 1px solid rgba(62, 19, 135, 0.15);
-    border-radius: 24px;
-    padding: 2.5rem 2rem;
     width: 100%;
-    max-width: 320px;
-    box-shadow: 0 0 0 1px rgba(62, 19, 135, 0.06), 0 24px 60px rgba(62, 19, 135, 0.08);
-    overflow: hidden;
+    min-width: 0;
+}
+
+.gallery-carousel {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    height: 560px;
     z-index: 1;
+    border-radius: 28px;
+    box-shadow: 0 24px 64px rgba(12, 30, 60, 0.15);
 }
 
-.story-number-wrap {
+.gallery-inner {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 28px;
+    background: #FFFFFF;
+}
+
+.gallery-track {
     display: flex;
-    align-items: flex-start;
-    gap: 6px;
-    margin-bottom: 1.5rem;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-slide {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    z-index: 2;
 }
 
-.story-big-num {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(4.5rem, 8vw, 7rem);
-    font-weight: 800;
-    color: #3e1387;
-    line-height: 1;
-    text-shadow: 0 8px 24px rgba(62, 19, 135, 0.15);
-}
-
-.story-num-meta {
+.design-match-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
-    padding-top: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 28px;
 }
 
-.story-plus {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 2rem;
-    font-weight: 800;
-    color: #3e1387;
-    line-height: 1;
+.design-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    border-radius: 28px;
 }
 
-.story-years-label {
+/* --- Top-Right Navy Badge --- */
+.design-location-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #0C1E3C;
+    color: #FFFFFF;
+    border-radius: 10px;
+    padding: 8px 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    z-index: 5;
+}
+
+.design-badge-icon {
+    font-size: 0.9rem;
+}
+
+.design-badge-text {
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: #5C6E8A;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    line-height: 1.35;
-    margin-top: 2px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
 }
 
-.story-divider {
-    height: 1px;
-    background: rgba(62, 19, 135, 0.1);
-    margin-bottom: 1.25rem;
-    position: relative;
-    z-index: 2;
-}
-
-.story-mini-stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    position: relative;
-    z-index: 2;
-}
-
-.story-mini {
+/* --- Bottom-Right Years Badge --- */
+.design-years-badge {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 100px;
+    height: 100px;
+    border-radius: 18px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3px;
-    padding: 0 0.5rem;
-    position: relative;
+    justify-content: center;
+    background: #E8841A;
+    box-shadow: 0 12px 32px rgba(232, 132, 26, 0.4);
+    z-index: 10;
+    padding: 1rem;
 }
 
-.story-mini+.story-mini::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 10%;
-    height: 80%;
-    width: 1px;
-    background: rgba(62, 19, 135, 0.1);
-}
-
-.story-mini-val {
+.design-years-val {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #0C1E3C;
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: #FFFFFF;
     line-height: 1;
 }
 
-.story-mini-label {
+.design-years-label {
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.65rem;
-    font-weight: 600;
-    color: #5C6E8A;
-    letter-spacing: 0.06em;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #FFFFFF;
     text-transform: uppercase;
-    text-align: center;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
 }
 
-/* Decorative rings behind the big number */
-.story-ring {
-    position: absolute;
-    border-radius: 50%;
-    border: 1px solid rgba(62, 19, 135, 0.06);
-    pointer-events: none;
-}
-
-.story-ring--outer {
-    width: 320px;
-    height: 320px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.story-ring--inner {
-    width: 200px;
-    height: 200px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-color: rgba(62, 19, 135, 0.04);
-}
-
-/* ── Responsive ──────────────────────────────────── */
+/* ── Responsive ───────────────────────── */
 @media (max-width: 960px) {
     .pillars-grid {
         grid-template-columns: 1fr;
@@ -465,19 +428,24 @@
 
     .story-strip {
         grid-template-columns: 1fr;
+        gap: 3rem;
     }
 
-    /* FIX: Hide the vertical divider line on mobile */
-    .story-strip::before {
-        display: none;
+    /* Center text on tablet/mobile when elements stack */
+    .story-left {
+        align-items: center;
     }
 
-    .story-right {
+    .story-heading {
+        text-align: center;
+    }
+
+    .story-body {
+        text-align: center;
+    }
+
+    .story-badges {
         justify-content: center;
-    }
-
-    .story-big-card {
-        max-width: 280px;
     }
 }
 
@@ -486,15 +454,48 @@
         text-align: center;
     }
 
-    .story-heading {
-        text-align: center;
+    .gallery-carousel {
+        width: 100%;
+        height: 520px;
     }
 
-    .story-badges {
-        justify-content: center;
+    .gallery-inner,
+    .design-match-wrapper,
+    .design-image {
+        border-radius: 20px;
     }
 
-    .story-big-num {
-        font-size: clamp(4rem, 15vw, 6rem);
+    .design-location-badge {
+        top: 1rem;
+        right: 1rem;
+        padding: 6px 12px;
+        border-radius: 8px;
+    }
+
+    .design-badge-text {
+        font-size: 0.8rem;
+    }
+
+    .design-years-badge {
+        width: 80px;
+        height: 80px;
+        border-radius: 14px;
+        bottom: 1rem;
+        right: 1rem;
+        padding: 0.5rem;
+    }
+
+    .design-years-val {
+        font-size: 2rem;
+    }
+
+    .design-years-label {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .gallery-carousel {
+        height: 460px;
     }
 }

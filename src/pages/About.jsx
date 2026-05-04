@@ -1,56 +1,90 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Container } from '@mui/material';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import './About.css';
 
-const container = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.13, delayChildren: 0.1 } },
-};
 const fadeUp = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1] } },
 };
-const fadeLeft = {
-    hidden: { opacity: 0, x: -40 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.75, ease: [0.4, 0, 0.2, 1] } },
-};
-const fadeRight = {
-    hidden: { opacity: 0, x: 40 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.75, ease: [0.4, 0, 0.2, 1] } },
+
+const stagger = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.13, delayChildren: 0.1 } },
 };
 
 const vp = { once: true, amount: 0.15 };
 
+// --- Pillars Data ---
 const pillars = [
-    {
-        tag: '🔭',
-        title: 'Our Vision',
-        body: "To build one of India's most trusted and fastest-growing franchise networks — empowering small business owners to grow into successful entrepreneurs across every city and town.",
-        accent: 'saffron',
-    },
-    {
-        tag: '🎯',
-        title: 'Our Mission',
-        body: 'Provide high-demand quality products, back every partner with real-time training and support, and ensure long-term profitability through structured growth plans.',
-        accent: 'blue',
-    },
-    {
-        tag: '💎',
-        title: 'Our Quality',
-        body: 'We supply trusted branded products, maintain full transparency, resolve complaints swiftly, and hold ourselves to the highest standards of service excellence.',
-        accent: 'green',
-    },
+    { tag: '🔭', title: 'Our Vision', body: "To build one of India's most trusted and fastest-growing franchise networks — empowering small business owners to grow into successful entrepreneurs.", accent: 'saffron' },
+    { tag: '🎯', title: 'Our Mission', body: 'Provide high-demand quality products, back every partner with real-time training and support, and ensure long-term profitability.', accent: 'blue' },
+    { tag: '💎', title: 'Our Quality', body: 'We supply trusted branded products, maintain full transparency, resolve complaints swiftly, and hold ourselves to the highest standards.', accent: 'green' },
 ];
 
+// --- Badges ---
 const storyBadges = [
     { icon: '🏅', label: '25+ Years Experience' },
-    { icon: '📦', label: '50+ Essential Products' },
-    { icon: '🌍', label: 'Pan-India Network' },
+    { icon: '📦', label: '₹5L - ₹15L Initial Stock' },
+    { icon: '📈', label: '₹15L - ₹25L+ Yearly Business' },
     { icon: '🤝', label: '87+ Active Partners' },
 ];
 
+// --- DYNAMIC CAROUSEL DATA ---
+const successStories = [
+    {
+        img: '/About/1.png',
+        location: 'Jamshedpur , Jharkhand',
+        successDesc: 'From ₹10K to ₹5L+ monthly revenue',
+        years: '15 Years'
+    },
+    {
+        img: '/About/2.png',
+        location: 'Hazaribag, Jharkhand',
+        successDesc: 'From ₹15K to ₹7L+ monthly revenue',
+        years: '12 Years'
+    },
+    {
+        img: '/About/3.png',
+        location: 'Ranchi , Jharkhand',
+        successDesc: 'From ₹12K to ₹6L+ monthly revenue',
+        years: '18 Years'
+    },
+    {
+        img: '/About/4.png',
+        location: 'Dhanbad , Jharkhand',
+        successDesc: 'From ₹20K to ₹8L+ monthly revenue',
+        years: '20 Years'
+    },
+];
+
+const galleryImages = [...successStories, successStories[0]]; // Double for infinite loop
+
 export default function About() {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const controls = useAnimation();
+
+    // -- PERCENTAGE-BASED Automatic Vertical Scroll Logic --
+    useEffect(() => {
+        const interval = setInterval(() => {
+            const nextIndex = (activeIndex + 1) % galleryImages.length;
+            setActiveIndex(nextIndex);
+
+            // Loop logic using % to ensure it scales down perfectly on all screens
+            if (nextIndex === successStories.length) {
+                controls.start({ x: `-${successStories.length * 100}%`, transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1] } })
+                    .then(() => {
+                        controls.set({ x: '0%' }); // Jump back to start instantly
+                        setActiveIndex(0);
+                    });
+            } else {
+                controls.start({ x: `-${nextIndex * 100}%`, transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1] } });
+            }
+        }, 5000); // 5 seconds interval
+
+        return () => clearInterval(interval);
+    }, [activeIndex, controls]);
+
     return (
         <Box component="section" className="about-root" id="about">
             <Container maxWidth="lg">
@@ -70,15 +104,15 @@ export default function About() {
                     </h2>
                     <p className="about-intro">
                         Since 2004, Shyama Business Growth has been turning ordinary shops into
-                        thriving franchise businesses. We believe every small entrepreneur deserves
-                        the tools, products, and guidance of a big brand — without the big-brand price.
+                        thriving franchise businesses. We handle the complexity so you can
+                        focus on growing your business step-by-step.
                     </p>
                 </motion.div>
 
                 {/* ── Pillars grid ── */}
                 <motion.div
                     className="pillars-grid"
-                    variants={container}
+                    variants={stagger}
                     initial="hidden"
                     whileInView="visible"
                     viewport={vp}
@@ -99,7 +133,7 @@ export default function About() {
                 <div className="story-strip">
                     <motion.div
                         className="story-left"
-                        variants={fadeLeft}
+                        variants={fadeUp}
                         initial="hidden"
                         whileInView="visible"
                         viewport={vp}
@@ -114,6 +148,7 @@ export default function About() {
                             model lets <strong>anyone</strong> start with confidence. No complex systems,
                             no abandoned partners — just real support, real products, real growth.
                         </p>
+
                         <div className="story-badges">
                             {storyBadges.map((b, i) => (
                                 <span key={i} className="story-badge">
@@ -125,39 +160,48 @@ export default function About() {
                     </motion.div>
 
                     <motion.div
-                        className="story-right"
-                        variants={fadeRight}
+                        className="story-right story-dynamic-right"
+                        variants={fadeUp}
                         initial="hidden"
                         whileInView="visible"
                         viewport={vp}
                     >
-                        {/* Big number visual */}
-                        <div className="story-big-card">
-                            <div className="story-number-wrap">
-                                <span className="story-big-num">25</span>
-                                <div className="story-num-meta">
-                                    <span className="story-plus">+</span>
-                                    <span className="story-years-label">Years<br />of Trust</span>
-                                </div>
+                        {/* Scalable Carousel */}
+                        <div className="gallery-carousel">
+                            <div className="gallery-inner">
+                                <motion.div
+                                    className="gallery-track"
+                                    animate={controls}
+                                    initial={{ x: '0%' }}
+                                >
+                                    {galleryImages.map((story, index) => (
+                                        <div key={index} className="gallery-slide">
+
+                                            <div className="design-match-wrapper">
+                                                <img
+                                                    src={story.img}
+                                                    alt={`Success milestone at ${story.location}`}
+                                                    className="design-image"
+                                                />
+
+                                                {/* Top-right Navy Badge */}
+                                                <div className="design-location-badge">
+                                                    <span className="design-badge-icon">📍</span>
+                                                    <span className="design-badge-text">{story.location}</span>
+                                                </div>
+
+                                                {/* Bottom-right Gold Badge (Moved securely inside the frame) */}
+                                                <div className="design-years-badge">
+                                                    <span className="design-years-val">{story.years.split(' ')[0]}</span>
+                                                    <span className="design-years-label">{story.years.split(' ').slice(1).join(' ')}</span>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    ))}
+                                </motion.div>
                             </div>
-                            <div className="story-divider" />
-                            <div className="story-mini-stats">
-                                <div className="story-mini">
-                                    <span className="story-mini-val">2004</span>
-                                    <span className="story-mini-label">Established</span>
-                                </div>
-                                <div className="story-mini">
-                                    <span className="story-mini-val">87+</span>
-                                    <span className="story-mini-label">Partners</span>
-                                </div>
-                                <div className="story-mini">
-                                    <span className="story-mini-val">₹0</span>
-                                    <span className="story-mini-label">Hidden Fees</span>
-                                </div>
-                            </div>
-                            {/* Decorative ring */}
-                            <div className="story-ring story-ring--outer" />
-                            <div className="story-ring story-ring--inner" />
                         </div>
                     </motion.div>
                 </div>

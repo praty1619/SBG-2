@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Container } from '@mui/material';
 import { motion } from 'framer-motion';
 import './FranchiseJourney.css';
@@ -44,6 +44,17 @@ const steps = [
 export default function FranchiseJourney() {
     const [activeStep, setActiveStep] = useState(0);
 
+    // ── ROBUST AUTO-PLAY LOGIC ──
+    useEffect(() => {
+        // Automatically switch tabs every 4.5 seconds
+        const timer = setInterval(() => {
+            setActiveStep((prev) => (prev + 1) % steps.length);
+        }, 4500);
+
+        // If user clicks a tab, this clears the old timer and starts a fresh 4.5 seconds
+        return () => clearInterval(timer);
+    }, [activeStep]);
+
     return (
         <Box component="section" className="journey-root" id="franchise">
             <Container maxWidth="lg">
@@ -67,7 +78,7 @@ export default function FranchiseJourney() {
                     </p>
                 </motion.div>
 
-                {/* ── Interactive Horizontal Accordion ── */}
+                {/* ── Interactive Horizontal Accordion (Auto-Playing) ── */}
                 <motion.div
                     className="fj-accordion-container"
                     variants={fadeUp}

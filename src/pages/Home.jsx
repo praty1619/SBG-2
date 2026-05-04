@@ -20,10 +20,10 @@ export default function Home() {
             {/* <Products /> */}
             <ProductShowcase/>
             <Range/>
-            <BrandsMarquee />
             <Model/>
             <FranchiseJourney />
             <WhyShyama />
+            <BrandsMarquee />
             <Contact />
         </Box>
     );

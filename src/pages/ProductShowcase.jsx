@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Container } from '@mui/material';
 import { motion, AnimatePresence } from 'framer-motion';
 import './ProductShowcase.css';
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Accents updated to your Premium Brand Palette (Navy, Purple, Burgundy)
+// Base Categories
 // ─────────────────────────────────────────────────────────────────────────────
-const categories = [
+const baseCategories = [
     {
         id: 'tyres',
         label: 'Tyres',
@@ -79,13 +79,28 @@ const categories = [
     },
 ];
 
-const totalSKUs = categories.reduce((s, c) => s + parseInt(c.count), 0);
+// Dynamically calculate total SKUs and combine all images for the "All" tab
+const totalSKUs = baseCategories.reduce((s, c) => s + parseInt(c.count), 0);
+const allImages = baseCategories.flatMap(c => c.images);
+
+const categories = [
+    {
+        id: 'all',
+        label: 'All',
+        icon: '✨',
+        count: `${totalSKUs} SKUs`,
+        accent: '#E8841A', // Saffron accent for the all tab
+        desc: 'Our complete catalogue of products across every category.',
+        images: allImages,
+    },
+    ...baseCategories
+];
 
 const vp = { once: true, amount: 0.1 };
 
 const gridVariants = {
     hidden: {},
-    visible: { transition: { staggerChildren: 0.07 } },
+    visible: { transition: { staggerChildren: 0.05 } },
 };
 
 const imgVariants = {
@@ -101,7 +116,15 @@ const imgVariants = {
 };
 
 export default function ProductShowcase() {
-    const [active, setActive] = useState(categories[0].id);
+    // ── SMART DEFAULT STATE ──
+    // Checks if the user is on mobile (<860px) on first load. If yes, default is 'all', otherwise 'tyres'.
+    const [active, setActive] = useState(() => {
+        if (typeof window !== 'undefined' && window.innerWidth <= 860) {
+            return 'all';
+        }
+        return 'tyres';
+    });
+
     const current = categories.find(c => c.id === active);
 
     return (
@@ -246,7 +269,7 @@ export default function ProductShowcase() {
                             >
                                 {current.images.map((img, i) => (
                                     <motion.div
-                                        key={i}
+                                        key={img.src + i}
                                         className={`showcase-cell showcase-cell--${img.span}`}
                                         variants={imgVariants}
                                     >

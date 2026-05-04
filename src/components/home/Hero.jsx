@@ -36,7 +36,7 @@ const Hero = () => (
                 <motion.div variants={stagger.item}>
                     <div className="h-badge">
                         <span className="h-badge-dot" />
-                        <span>150+ Retailers Trust Us</span>
+                        <span>87+ Retailers Trust Us</span>
                     </div>
                 </motion.div>
 
@@ -72,7 +72,7 @@ const Hero = () => (
                         {[
                             { n: '25+', l: 'Years Experience' },
                             { n: '40+', l: 'Products' },
-                            { n: '150+', l: 'Retailers' },
+                            { n: '87+', l: 'Retailers' },
                             { n: '₹5L–15L', l: 'Growth Potential' },
                         ].map((s, i) => (
                             <React.Fragment key={s.n}>
@@ -132,7 +132,7 @@ const Hero = () => (
                         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
                     >
                         <span className="h-chip-dot" />
-                        150+ Stores Live
+                        87+ Stores Live
                     </motion.div>
 
                 </div>
@@ -145,7 +145,7 @@ const Hero = () => (
                     transition={{ delay: 0.8 }}
                 >
                     {/* Bright Coral Icon */}
-                    <VerifiedIcon sx={{ fontSize: 16, color: '#FF6B6B' }} />
+                    <VerifiedIcon sx={{ fontSize: 16, color: '#0dc93c' }} />
                     <span>Verified franchise partner network across India</span>
                 </motion.div>
 

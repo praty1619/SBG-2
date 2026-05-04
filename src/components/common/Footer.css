@@ -2,7 +2,6 @@
 
 /* ── Root ────────────────────────────────────────── */
 .footer-root {
-  /* Very soft, elegant, muted purplish-cream */
   background: #F7F5FA;
   border-top: 1px solid rgba(62, 19, 135, 0.1);
   padding: clamp(4rem, 6vw, 6.5rem) 0 2rem;
@@ -11,8 +10,6 @@
 }
 
 /* ── VISIBLE BACKGROUND DESIGN ELEMENTS ──────────── */
-
-/* Giant Typography Watermark (Mobile Responsive) */
 .footer-watermark {
   position: absolute;
   top: 50%;
@@ -22,7 +19,6 @@
   font-size: clamp(3.5rem, 15vw, 16rem);
   font-weight: 800;
   color: transparent;
-  /* DARKER, VISIBLE OUTLINE HERE */
   -webkit-text-stroke: 2px rgba(62, 19, 135, 0.18);
   z-index: 0;
   pointer-events: none;
@@ -31,7 +27,6 @@
   white-space: nowrap;
 }
 
-/* Glowing Orbs */
 .footer-bg-glow {
   position: absolute;
   border-radius: 50%;
@@ -56,7 +51,6 @@
   right: -100px;
 }
 
-
 /* ── Grid ────────────────────────────────────────── */
 .footer-grid {
   display: grid;
@@ -69,58 +63,43 @@
 .footer-brand {
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: 1.25rem;
 }
 
-.footer-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* Original Saffron Gem (Untouched) */
-.footer-logo-gem {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #E8841A, #F5A84E);
-  display: flex;
+/* ── Sleek Transparent Logo Container ── */
+.footer-logo-container {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: #fff;
-  flex-shrink: 0;
-  box-shadow: 0 4px 14px rgba(232, 132, 26, 0.35);
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.6);
+  /* Slightly transparent white */
+  border: 1px solid rgba(62, 19, 135, 0.08);
+  /* Soft purple border */
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(12, 30, 60, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  width: fit-content;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.footer-logo-name {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: #0C1E3C;
-  /* Navy */
-  margin: 0 0 2px;
+.footer-logo-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(62, 19, 135, 0.08);
 }
 
-.footer-logo-sub {
-  font-size: 0.6rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: #3e1387;
-  /* Purple Accent */
-  text-transform: uppercase;
-  font-family: 'DM Sans', sans-serif;
-  margin: 0;
+.footer-logo-graphic {
+  height: 54px;
+  /* Scaled perfectly for the footer */
+  width: auto;
+  object-fit: contain;
 }
 
 .footer-tagline {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.83rem;
   color: #5C6E8A;
-  /* Muted Slate */
   line-height: 1.7;
   margin: 0;
   max-width: 280px;
@@ -183,7 +162,6 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #0C1E3C;
-  /* Navy */
   margin: 0 0 1rem;
 }
 
@@ -207,7 +185,6 @@
 .footer-link:hover {
   color: #3e1387;
   transform: translateX(3px);
-  /* Smooth slide effect */
 }
 
 /* ── Contact column ──────────────────────────────── */
@@ -346,6 +323,11 @@
   .footer-brand,
   .footer-col {
     align-items: flex-start;
+  }
+
+  .footer-logo-graphic {
+    height: 42px;
+    /* Scale down slightly for mobile */
   }
 
   .footer-bottom {
