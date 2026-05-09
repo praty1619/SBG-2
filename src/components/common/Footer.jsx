@@ -1,11 +1,22 @@
 import React from 'react';
+import { Link as RouterLink } from 'react-router-dom'; // Added RouterLink for navigation
 import { Box, Container } from '@mui/material';
 import './Footer.css';
 
+// ── CLEANED UP & HIGHLY DESCRIPTIVE LINKS ──
 const footerLinks = {
-    Company: ['About Us', 'Our Story', 'Careers', 'Press'],
-    Franchise: ['How It Works', 'Products', 'Apply Now', 'Partner Login'],
-    Support: ['24/7 Help', 'FAQs', 'Complaint Form', 'Contact Us'],
+    Company: [
+        { label: 'About Us', path: '/about', desc: 'Our story and vision for Bharat' },
+        { label: 'Products', path: '/ProductShowcase', desc: 'Explore our full catalogue' },
+    ],
+    Franchise: [
+        { label: 'How It Works', path: '/#growth-model', desc: 'Understand the growth model' },
+        { label: 'Apply Now', path: '/contact', desc: 'Start your franchise journey' },
+    ],
+    Support: [
+        { label: 'Contact Us', path: '/contact', desc: 'Get in touch with our team' },
+        { label: 'Complaint Form', path: '/complaint', desc: 'Dedicated partner support desk' },
+    ],
 };
 
 const socials = [
@@ -58,14 +69,17 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Link columns */}
+                    {/* Dynamic Link columns with Subtext */}
                     {Object.entries(footerLinks).map(([heading, links]) => (
                         <div key={heading} className="footer-col">
                             <p className="footer-col-heading">{heading}</p>
                             <ul className="footer-col-links">
                                 {links.map(link => (
-                                    <li key={link}>
-                                        <a href="#" className="footer-link">{link}</a>
+                                    <li key={link.label} className="footer-link-item">
+                                        <RouterLink to={link.path} className="footer-link">
+                                            {link.label}
+                                        </RouterLink>
+                                        <span className="footer-link-desc">{link.desc}</span>
                                     </li>
                                 ))}
                             </ul>
@@ -91,9 +105,9 @@ export default function Footer() {
                         </div>
 
                         {/* Solid Purple CTA Button */}
-                        <a href="#contact" className="footer-cta-btn">
+                        <RouterLink to="/contact" className="footer-cta-btn">
                             Become a Partner →
-                        </a>
+                        </RouterLink>
                     </div>
 
                 </div>
@@ -107,11 +121,9 @@ export default function Footer() {
                         © {new Date().getFullYear()} Shyama Business Growth. All rights reserved.
                     </p>
                     <div className="footer-bottom-links">
-                        <a href="#">Privacy Policy</a>
+                        <RouterLink to="/privacy">Privacy Policy</RouterLink>
                         <span>·</span>
-                        <a href="#">Terms of Use</a>
-                        <span>·</span>
-                        <a href="#">Cookie Policy</a>
+                        <RouterLink to="/terms">Terms of Use</RouterLink>
                     </div>
                 </div>
 

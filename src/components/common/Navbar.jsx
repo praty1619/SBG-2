@@ -11,6 +11,7 @@ const navLinks = [
     { title: 'About', path: '/about' },
     { title: 'Products', path: '/ProductShowcase' },
     { title: 'Contact', path: '/contact' },
+    { title: 'Support', path: '/complaint' },
 ];
 
 export default function Navbar() {

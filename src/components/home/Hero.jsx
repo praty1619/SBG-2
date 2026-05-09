@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // ── Added Link for routing ──
 import { motion } from 'framer-motion';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -56,14 +57,18 @@ const Hero = () => (
                     </p>
                 </motion.div>
 
-                {/* Buttons */}
+                {/* ── Buttons (Updated to Router Links) ── */}
                 <motion.div variants={stagger.item} className="h-cta-row">
-                    <button className="h-btn-primary">
+
+                    <Link to="/contact" className="h-btn-primary" style={{ textDecoration: 'none' }}>
                         Start Your Journey <ArrowForwardIcon style={{ fontSize: 18 }} />
-                    </button>
-                    <button className="h-btn-outline">
+                    </Link>
+
+                    {/* LATER: When PDF is ready, change this to: <a href="/catalog.pdf" download className="h-btn-outline" style={{ textDecoration: 'none' }}> */}
+                    <Link to="/ProductShowcase" className="h-btn-outline" style={{ textDecoration: 'none' }}>
                         <StorefrontIcon style={{ fontSize: 18 }} /> Explore Catalog
-                    </button>
+                    </Link>
+
                 </motion.div>
 
                 {/* Stats Box Strip */}

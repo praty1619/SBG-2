@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+/* ── Root ────────────────────────────────────────── */
+.complaint-root {
+    background: #FDFAF5;
+    padding: clamp(6rem, 10vw, 10rem) 0 clamp(4rem, 8vw, 8rem);
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+.complaint-root::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(62, 19, 135, 0.15), transparent);
+}
+
+.complaint-bg-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.complaint-bg-glow--tl {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(62, 19, 135, 0.05) 0%, transparent 70%);
+    top: -100px;
+    left: -200px;
+}
+
+.complaint-bg-glow--br {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(232, 132, 26, 0.05) 0%, transparent 70%);
+    bottom: -100px;
+    right: -150px;
+}
+
+/* ── Header ──────────────────────────────────────── */
+.complaint-header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: clamp(3rem, 6vw, 4rem);
+}
+
+.complaint-header .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #3e1387;
+    background: #F5F3FF;
+    border: 1px solid rgba(62, 19, 135, 0.15);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 1.25rem;
+}
+
+.complaint-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: #0C1E3C;
+    margin: 0 0 1rem;
+    line-height: 1.15;
+}
+
+.heading-accent {
+    color: #3e1387;
+}
+
+.complaint-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+    color: #5C6E8A;
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0;
+}
+
+/* ── Layout ──────────────────────────────────────── */
+.complaint-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 2rem;
+    align-items: stretch;
+}
+
+/* ── Info Card (Left) ────────────────────────────── */
+.info-card {
+    background: #3e1387;
+    border-radius: 24px;
+    padding: 2.5rem;
+    color: #FFFFFF;
+    height: 100%;
+    box-shadow: 0 16px 40px rgba(62, 19, 135, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.info-card::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.info-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 1rem;
+    line-height: 1.2;
+}
+
+.info-card-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin: 0 0 2.5rem;
+}
+
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.info-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.info-item-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.info-item-sub {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* ── Form Card (Right) ───────────────────────────── */
+.form-card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 32px rgba(12, 30, 60, 0.04);
+    border: 1px solid rgba(12, 30, 60, 0.06);
+}
+
+.form-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #0C1E3C;
+    margin: 0 0 1.5rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-group.full-width {
+    grid-column: 1 / -1;
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #0C1E3C;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(12, 30, 60, 0.15);
+    background: #FAFAFA;
+    color: #0C1E3C;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.input-group select {
+    cursor: pointer;
+    appearance: none;
+    /* Helps with custom styling across browsers */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230C1E3C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: #3e1387;
+    background: #FFFFFF;
+    box-shadow: 0 0 0 4px rgba(62, 19, 135, 0.08);
+}
+
+.input-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-submit-btn {
+    width: 100%;
+    background: #E8841A;
+    color: #FFFFFF;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 16px rgba(232, 132, 26, 0.3);
+}
+
+.form-submit-btn:hover {
+    background: #d4731a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(232, 132, 26, 0.4);
+}
+
+/* ── Success State ───────────────────────────────── */
+.form-success-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.success-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+.success-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #0C1E3C;
+    margin: 0 0 1rem;
+}
+
+.success-desc {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    color: #5C6E8A;
+    line-height: 1.6;
+    margin: 0 0 2rem;
+}
+
+.form-reset-btn {
+    background: transparent;
+    border: 1px solid rgba(62, 19, 135, 0.2);
+    color: #3e1387;
+    padding: 12px 24px;
+    border-radius: 999px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.form-reset-btn:hover {
+    background: rgba(62, 19, 135, 0.05);
+}
+
+/* ── Responsive ──────────────────────────────────── */
+@media (max-width: 900px) {
+    .complaint-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .info-card {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+        /* Stack inputs on mobile */
+        gap: 1rem;
+    }
+
+    .form-card {
+        padding: 1.5rem;
+    }
+
+    .info-list {
+        gap: 1.25rem;
+    }
+}
