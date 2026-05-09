@@ -105,7 +105,7 @@ export default function WhyShyama() {
               whileInView="visible"
               viewport={vp}
             >
-              <span className="section-tag section-tag--dark">Trust of 150+ Partners</span>
+              <span className="section-tag section-tag--dark">Trust of 87+ Partners</span>
               <h2 className="ws-heading">
                 Our Partner<br />
                 Success Stories
