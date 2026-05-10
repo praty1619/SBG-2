@@ -33,25 +33,25 @@ const storyBadges = [
 // --- DYNAMIC CAROUSEL DATA ---
 const successStories = [
     {
-        img: '/About/1.png',
+        img: '/about/5.png',
         location: 'Jamshedpur , Jharkhand',
         successDesc: 'From ₹10K to ₹5L+ monthly revenue',
         years: '15 Years'
     },
     {
-        img: '/About/2.png',
+        img: '/about/6.png',
         location: 'Hazaribag, Jharkhand',
         successDesc: 'From ₹15K to ₹7L+ monthly revenue',
         years: '12 Years'
     },
     {
-        img: '/About/3.png',
+        img: '/about/7.png',
         location: 'Ranchi , Jharkhand',
         successDesc: 'From ₹12K to ₹6L+ monthly revenue',
         years: '18 Years'
     },
     {
-        img: '/About/4.png',
+        img: '/about/8.png',
         location: 'Dhanbad , Jharkhand',
         successDesc: 'From ₹20K to ₹8L+ monthly revenue',
         years: '20 Years'
